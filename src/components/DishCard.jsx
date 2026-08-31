@@ -109,30 +109,30 @@ export default function DishCard({ dish, onAddToCart, isFav, onToggleFav, onView
 
         <img
           src={dish.image} alt={dish.name} loading="lazy" decoding="async"
-          className="h-36 w-auto object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-xl"
+          className="h-24 sm:h-36 w-auto object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-xl"
         />
       </div>
 
       {/* Content */}
-      <div className="p-5 flex flex-col flex-grow">
+      <div className="p-3 sm:p-5 flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-1">
-          <h3 className="text-base font-700 leading-snug" style={{ color: 'var(--color-brown)' }}>
+          <h3 className="text-[14px] sm:text-base font-700 leading-snug" style={{ color: 'var(--color-brown)' }}>
             {dish.name}
           </h3>
           <Info className="w-4 h-4 mt-0.5 ml-1 flex-shrink-0 opacity-30 group-hover:opacity-70 transition-opacity"
             style={{ color: 'var(--color-terracotta)' }} />
         </div>
 
-        <p className="text-[11px] mb-2" style={{ color: 'var(--color-muted)' }}>
+        <p className="text-[10px] sm:text-[11px] mb-2" style={{ color: 'var(--color-muted)' }}>
           {dish.pieces} · {dish.isVeg ? '🌿 Veg' : '🐟 Non-Veg'}
         </p>
 
-        <p className="text-[12px] leading-relaxed flex-grow mb-4 line-clamp-2" style={{ color: 'var(--color-muted)' }}>
+        <p className="text-[11px] sm:text-[12px] leading-relaxed flex-grow mb-4 line-clamp-2" style={{ color: 'var(--color-muted)' }}>
           {dish.description}
         </p>
 
         <div className="flex items-center justify-between" onClick={e => e.stopPropagation()}>
-          <span className="text-[18px] font-800" style={{ color: 'var(--color-terracotta)' }}>
+          <span className="text-[15px] sm:text-[18px] font-800" style={{ color: 'var(--color-terracotta)' }}>
             ₹{dish.price}
           </span>
           <button

@@ -1,5 +1,6 @@
-import { CalendarDays, Users, Clock, ArrowRight, CheckCircle2, Ticket, User, Phone, Loader2, Fish, Star } from 'lucide-react';
+import { CalendarDays, Users, Clock, ArrowRight, CheckCircle2, Ticket, User, Phone, Loader2, Fish, Star, Download } from 'lucide-react';
 import { useState, useMemo } from 'react';
+import { downloadPassAsImage } from '../utils/downloadPass';
 
 export default function ReservationSection() {
   const [step, setStep] = useState(1); // 1 = party+date, 2 = time+contact
@@ -191,9 +192,24 @@ export default function ReservationSection() {
                   </div>
                 </div>
 
+                <div className="flex flex-col sm:flex-row items-center gap-3 mt-6">
+                  <button
+                    onClick={() => downloadPassAsImage({
+                      bookingId: `RES-${Math.floor(1000 + Math.random() * 9000)}`,
+                      name,
+                      date: getSelectedDateDisplay(),
+                      time: selectedTime,
+                      guests: partySize
+                    })}
+                    className="btn-accent w-full flex items-center justify-center gap-2 py-3 rounded-full text-xs font-bold uppercase tracking-wider"
+                  >
+                    <Download className="w-4 h-4" /> Download Pass (PNG)
+                  </button>
+                </div>
+
                 <button
                   onClick={() => { setSubmitted(false); setSelectedTime(''); setStep(1); setName(''); setPhone(''); }}
-                  className="mt-6 text-sm font-bold text-[var(--color-muted)] hover:text-[var(--color-dark)] transition-colors underline underline-offset-4"
+                  className="mt-4 text-xs font-bold text-[var(--color-muted)] hover:text-[var(--color-dark)] transition-colors underline underline-offset-4"
                 >
                   Make another booking
                 </button>

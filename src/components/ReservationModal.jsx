@@ -1,5 +1,6 @@
-import { X, CalendarDays, Clock, Users, CheckCircle2 } from 'lucide-react';
+import { X, CalendarDays, Clock, Users, CheckCircle2, Download } from 'lucide-react';
 import { useState } from 'react';
+import { downloadPassAsImage } from '../utils/downloadPass';
 
 export default function ReservationModal({ isOpen, onClose }) {
   const [step, setStep] = useState('form'); // 'form' or 'receipt'
@@ -175,9 +176,23 @@ export default function ReservationModal({ isOpen, onClose }) {
               </div>
             </div>
 
-            <button onClick={handleClose} className="btn-outline w-full justify-center mt-6 py-2.5">
-              Close
-            </button>
+            <div className="flex gap-3 w-full mt-6">
+              <button 
+                onClick={() => downloadPassAsImage({
+                  bookingId,
+                  name: formData.name,
+                  date: formData.date,
+                  time: formData.time,
+                  guests: formData.guests
+                })}
+                className="btn-accent flex-1 justify-center py-2.5 flex items-center gap-2 text-[13px]"
+              >
+                <Download className="w-4 h-4" /> Download Pass
+              </button>
+              <button onClick={handleClose} className="btn-outline flex-1 justify-center py-2.5 text-[13px]">
+                Close
+              </button>
+            </div>
           </div>
         )}
       </div>

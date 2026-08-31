@@ -265,7 +265,6 @@ h2.section-title {
   width: auto;
   object-fit: contain;
   transition: transform 0.5s;
-  filter: drop-shadow(0 12px 20px rgba(61, 43, 31, 0.15));
 }
 
 .popular-card:hover img {

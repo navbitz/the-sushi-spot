@@ -38,7 +38,7 @@ export default function Hero({ onOpenReservation }) {
             alt="Premium Sushi Nigiri"
             fetchPriority="high"
             decoding="async"
-            className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-[6%] w-[440px] lg:w-[620px] xl:w-[720px] max-w-none object-contain z-10 drop-shadow-xl select-none"
+            className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-[6%] w-[440px] lg:w-[620px] xl:w-[720px] max-w-none object-contain z-10 select-none"
           />
         </div>
       </div>

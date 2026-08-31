@@ -95,16 +95,8 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
                 className="flex gap-4 pb-5"
                 style={{ borderBottom: '1px solid var(--color-cream-dark)' }}
               >
-                <div
-                  className="w-16 h-16 rounded-2xl flex-shrink-0 flex items-center justify-center"
-                  style={{ background: 'var(--color-cream)' }}
-                >
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-14 h-14 object-contain"
-                    style={{ filter: 'drop-shadow(0 4px 8px rgba(61,43,31,0.15))' }}
-                  />
+                <div className="w-16 h-16 shrink-0 bg-[var(--color-cream-dark)] rounded-xl flex items-center justify-center overflow-hidden">
+                  <img src={item.image} alt={item.name} className="w-12 h-auto object-contain" />
                 </div>
                 <div className="flex-grow">
                   <div className="flex justify-between items-start">

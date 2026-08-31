@@ -68,7 +68,7 @@ export default function DishModal({ dish, onClose }) {
             )}
             <img
               src={dish.image} alt={dish.name}
-              className={`h-44 w-auto object-contain drop-shadow-2xl transition-opacity duration-300 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+              className={`h-44 w-auto object-contain transition-opacity duration-300 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
               onLoad={() => setImgLoaded(true)}
             />
             <button

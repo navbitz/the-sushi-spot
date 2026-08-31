@@ -31,7 +31,7 @@ export function PopularCard({ dish, onAddToCart, onViewDetail }) {
   return (
     <div className="popular-card group" onClick={() => onViewDetail(dish)}>
       <div className="popular-card-img-wrapper">
-        <img src={dish.image} alt={dish.name} loading="lazy" decoding="async" className="drop-shadow-2xl transition-transform duration-300 group-hover:scale-105" />
+        <img src={dish.image} alt={dish.name} loading="lazy" decoding="async" className="transition-transform duration-300 group-hover:scale-105" />
       </div>
 
       <h3 className="text-[17px] font-800 mb-0.5" style={{ color: 'var(--color-dark)' }}>
@@ -109,7 +109,7 @@ export default function DishCard({ dish, onAddToCart, isFav, onToggleFav, onView
 
         <img
           src={dish.image} alt={dish.name} loading="lazy" decoding="async"
-          className="h-24 sm:h-36 w-auto object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-xl"
+          className="h-24 sm:h-36 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
         />
       </div>
 

@@ -50,7 +50,7 @@ export default function Hero({ onOpenReservation }) {
           <div ref={contentRef} data-visible={contentVisible} className="reveal-left">
             {/* Title with inline image */}
             <h1
-              className="text-[54px] sm:text-[70px] md:text-[85px] leading-[1.05] font-900 tracking-tight mb-5 sm:mb-6 relative"
+              className="text-[44px] sm:text-[70px] md:text-[85px] leading-[1.05] font-900 tracking-tight mb-5 sm:mb-6 relative"
               style={{ color: 'var(--color-dark)', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}
             >
               The Sushi
@@ -83,17 +83,14 @@ export default function Hero({ onOpenReservation }) {
                   e.preventDefault();
                   document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn-accent px-10 py-4 rounded-full text-[15px]"
+                className="btn-accent px-6 py-3 sm:px-10 sm:py-4 rounded-full text-[13px] sm:text-[15px]"
               >
                 Explore Menu
               </button>
               {/* Secondary CTA — ghost, smaller, lower visual weight */}
               <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('reservation')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="inline-flex items-center justify-center bg-transparent text-[var(--color-dark)] px-7 py-3.5 rounded-full text-[14px] font-medium hover:bg-[var(--color-cream-dark)] transition-colors whitespace-nowrap border border-[rgba(0,0,0,0.12)]"
+                onClick={onOpenReservation}
+                className="inline-flex items-center justify-center bg-transparent text-[var(--color-dark)] px-6 py-3 sm:px-7 sm:py-4 rounded-full text-[13px] sm:text-[15px] font-medium hover:bg-[var(--color-cream-dark)] transition-colors whitespace-nowrap border border-[rgba(0,0,0,0.12)]"
               >
                 Find a Table
               </button>

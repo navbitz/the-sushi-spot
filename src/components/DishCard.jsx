@@ -137,9 +137,9 @@ export default function DishCard({ dish, onAddToCart, isFav, onToggleFav, onView
           </span>
           <button
             onClick={handleAdd}
-            className={`flex items-center justify-center gap-1.5 h-[44px] px-5 rounded-full text-[13px] font-700 transition-all ${justAdded ? 'bg-[var(--color-success)] text-white shadow-md' : 'btn-accent'}`}
+            className={`flex items-center justify-center gap-1 sm:gap-1.5 h-[38px] sm:h-[44px] px-3 sm:px-5 rounded-full text-[12px] sm:text-[13px] font-700 transition-all ${justAdded ? 'bg-[var(--color-success)] text-white shadow-md' : 'btn-accent'}`}
           >
-            {justAdded ? <><Check className="w-4 h-4" /> Added</> : <><Plus className="w-4 h-4" /> Add</>}
+            {justAdded ? <><Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> <span className="hidden sm:inline">Added</span></> : <><Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> <span className="hidden sm:inline">Add</span></>}
           </button>
         </div>
       </div>

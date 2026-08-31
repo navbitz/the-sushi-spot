@@ -111,7 +111,7 @@ export default function Hero({ onOpenReservation }) {
       <div className="max-w-7xl mx-auto px-6 lg:px-14 w-full relative z-10 mt-10">
 
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-900" style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>Why The Sushi Spot ?</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-900" style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>Why The Sushi Spot ?</h2>
         </div>
 
         <div ref={stripRef} className="rounded-[40px] p-8 md:p-14 transition-colors" style={{ background: 'var(--color-cream-dark)' }}>

@@ -37,8 +37,8 @@ export default function Reviews() {
   return (
     <section id="reviews" className="py-20 lg:py-24 bg-[var(--color-cream-dark)] transition-colors relative overflow-hidden">
       {/* ── Ambient Background Elements ── */}
-      <div className="absolute top-10 left-[-10%] w-[300px] h-[300px] bg-[var(--color-terracotta-pale)] rounded-full blur-[80px] pointer-events-none opacity-60 z-0" />
-      <div className="absolute bottom-[-10%] right-[-5%] w-[400px] h-[400px] bg-[var(--color-terracotta-pale)] rounded-full blur-[100px] pointer-events-none opacity-50 z-0" />
+      <div className="absolute top-10 left-[-10%] w-[300px] h-[300px] rounded-full pointer-events-none opacity-60 z-0" style={{ background: 'radial-gradient(circle, var(--color-terracotta-pale) 0%, transparent 70%)' }} />
+      <div className="absolute bottom-[-10%] right-[-5%] w-[400px] h-[400px] rounded-full pointer-events-none opacity-50 z-0" style={{ background: 'radial-gradient(circle, var(--color-terracotta-pale) 0%, transparent 70%)' }} />
 
       <div className="max-w-6xl mx-auto px-5 lg:px-14 relative z-10">
         <div ref={headerRef} data-visible={headerVisible} className="reveal-up text-center mb-14">

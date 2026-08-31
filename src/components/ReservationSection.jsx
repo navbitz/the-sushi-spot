@@ -108,8 +108,8 @@ export default function ReservationSection() {
   return (
     <section id="reservation" className="py-20 lg:py-24 transition-colors relative overflow-hidden" style={{ background: 'var(--color-cream)' }}>
       {/* ── Ambient Background Elements ── */}
-      <div className="absolute top-[-10%] left-[-5%] w-[400px] h-[400px] bg-[var(--color-terracotta-pale)] rounded-full blur-[100px] pointer-events-none opacity-40 z-0" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-[var(--color-terracotta-pale)] rounded-full blur-[120px] pointer-events-none opacity-40 z-0" />
+      <div className="absolute top-[-10%] left-[-5%] w-[400px] h-[400px] rounded-full pointer-events-none opacity-40 z-0" style={{ background: 'radial-gradient(circle, var(--color-terracotta-pale) 0%, transparent 70%)' }} />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full pointer-events-none opacity-40 z-0" style={{ background: 'radial-gradient(circle, var(--color-terracotta-pale) 0%, transparent 70%)' }} />
       
       {/* Subtle Watermark Icons */}
       <Fish className="absolute top-[15%] left-[5%] w-32 h-32 text-[var(--color-terracotta)] opacity-[0.03] pointer-events-none -rotate-12 z-0 hidden lg:block" />

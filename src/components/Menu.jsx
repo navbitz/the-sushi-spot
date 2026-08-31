@@ -23,8 +23,8 @@ export default function Menu({ onViewDetail, onOpenCart, onOpenFullMenu }) {
         style={{ background: 'var(--color-cream)' }}
       >
         {/* ── Ambient Background Elements ── */}
-        <div className="absolute top-[40%] right-[-10%] w-[500px] h-[500px] bg-[var(--color-terracotta-pale)] rounded-full blur-[120px] pointer-events-none opacity-40 z-0" />
-        <div className="absolute bottom-[10%] left-[-5%] w-[300px] h-[300px] bg-[var(--color-terracotta-pale)] rounded-full blur-[80px] pointer-events-none opacity-40 z-0" />
+        <div className="absolute top-[40%] right-[-10%] w-[500px] h-[500px] rounded-full pointer-events-none opacity-40 z-0" style={{ background: 'radial-gradient(circle, var(--color-terracotta-pale) 0%, transparent 70%)' }} />
+        <div className="absolute bottom-[10%] left-[-5%] w-[300px] h-[300px] rounded-full pointer-events-none opacity-40 z-0" style={{ background: 'radial-gradient(circle, var(--color-terracotta-pale) 0%, transparent 70%)' }} />
         
         {/* Subtle Watermark Icons */}
         <ChefHat className="absolute top-[20%] right-[10%] w-48 h-48 text-[var(--color-terracotta)] opacity-[0.03] pointer-events-none rotate-12 z-0 hidden lg:block" />

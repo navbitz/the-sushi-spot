@@ -58,7 +58,7 @@ export default function Menu({ onViewDetail, onOpenFullMenu }) {
           <div ref={ctaRef} data-visible={ctaVisible} className="reveal-up stagger-2 text-center mt-12">
             <button
               onClick={onOpenFullMenu}
-              className="btn-primary"
+              className="btn-outline"
               style={{ padding: '14px 36px', fontSize: '15px' }}
             >
               Explore Full Menu

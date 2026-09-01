@@ -5,16 +5,20 @@ import { useStore } from '../context/StoreContext';
 export default function OrderTrackerModal({ isOpen, onClose, finalTotal }) {
   const { cartItems } = useStore();
   const [step, setStep] = useState(0);
-  const [orderId, setOrderId] = useState('SS-1001');
+  const [orderId, setOrderId] = useState(() => `SS-${Math.floor(1000 + Math.random() * 9000)}`);
 
   useEffect(() => {
     if (isOpen) {
-      setStep(0);
-      setOrderId(`SS-${Math.floor(1000 + Math.random() * 9000)}`);
       const t1 = setTimeout(() => setStep(1), 2000);
       const t2 = setTimeout(() => setStep(2), 5000);
       const t3 = setTimeout(() => setStep(3), 8500);
-      return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+      return () => { 
+        clearTimeout(t1); 
+        clearTimeout(t2); 
+        clearTimeout(t3);
+        setStep(0);
+        setOrderId(`SS-${Math.floor(1000 + Math.random() * 9000)}`);
+      };
     }
   }, [isOpen]);
 

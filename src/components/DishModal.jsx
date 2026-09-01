@@ -3,10 +3,10 @@ import { useState, useEffect } from 'react';
 import { useStore } from '../context/StoreContext';
 
 /* FSSAI-style veg/non-veg dot */
-function VegDot({ isVeg, size = 5 }) {
+function VegDot({ isVeg }) {
   return (
     <div
-      className={`w-${size} h-${size} rounded-sm inline-flex items-center justify-center flex-shrink-0`}
+      className="w-5 h-5 rounded-sm inline-flex items-center justify-center flex-shrink-0"
       style={{ border: `2px solid ${isVeg ? '#1a8c3e' : '#c0392b'}` }}
     >
       <div

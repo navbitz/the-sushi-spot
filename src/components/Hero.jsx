@@ -89,7 +89,10 @@ export default function Hero({ onOpenReservation }) {
               </button>
               {/* Secondary CTA — ghost, smaller, lower visual weight */}
               <button
-                onClick={onOpenReservation}
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('reservation')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="inline-flex items-center justify-center bg-transparent text-[var(--color-dark)] px-6 py-3 sm:px-7 sm:py-4 rounded-full text-[13px] sm:text-[15px] font-medium hover:bg-[var(--color-cream-dark)] transition-colors whitespace-nowrap border border-[rgba(0,0,0,0.12)]"
               >
                 Find a Table

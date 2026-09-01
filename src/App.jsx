@@ -44,7 +44,7 @@ function App() {
           <Navbar setIsCartOpen={setIsCartOpen} />
 
           <main>
-            <Hero onOpenReservation={() => setIsReservationOpen(true)} />
+            <Hero />
             <Menu
               onViewDetail={setSelectedDish}
               onOpenCart={() => setIsCartOpen(true)}

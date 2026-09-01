@@ -129,7 +129,7 @@ export default function ReservationModal({ isOpen, onClose }) {
               </div>
             </div>
 
-            <button type="submit" className="btn-accent w-full justify-center mt-2 py-3 rounded-full font-bold">
+            <button type="submit" className="btn-primary w-full justify-center mt-2 py-3">
               Confirm Reservation
             </button>
           </form>

@@ -8,12 +8,21 @@ export default function Navbar({ setIsCartOpen }) {
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [dark, setDark] = useState(() => document.documentElement.classList.contains('dark'));
+  const [dark, setDark] = useState(() => {
+    try {
+      return localStorage.getItem('theme') === 'dark' || document.documentElement.classList.contains('dark');
+    } catch {
+      return false;
+    }
+  });
 
   const toggleDark = () => {
     const html = document.documentElement;
-    html.classList.toggle('dark');
-    setDark(html.classList.contains('dark'));
+    const isDarkNow = html.classList.toggle('dark');
+    setDark(isDarkNow);
+    try {
+      localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
+    } catch {}
   };
 
   useEffect(() => {

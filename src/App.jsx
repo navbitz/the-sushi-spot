@@ -35,7 +35,12 @@ function App() {
 
       {showFullMenuPage ? (
         <FullMenuPage
-          onBack={() => setShowFullMenuPage(false)}
+          onBack={() => {
+            setShowFullMenuPage(false);
+            setTimeout(() => {
+              document.getElementById('menu')?.scrollIntoView({ behavior: 'auto' });
+            }, 10);
+          }}
           onViewDetail={setSelectedDish}
           onOpenCart={() => setIsCartOpen(true)}
         />

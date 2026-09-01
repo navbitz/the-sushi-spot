@@ -608,20 +608,33 @@ h2.section-title {
 .stagger-5 { transition-delay: 0.33s; }
 .stagger-6 { transition-delay: 0.40s; }
 
-/* ── Page Transition ── */
-@keyframes pageEnterFadeUp {
+/* ── Page & Grid Transitions ── */
+@keyframes pageFadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+  }
+}
+
+@keyframes gridSwap {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
 .anim-page-enter {
-  animation: pageEnterFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: pageFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-grid-swap {
+  animation: gridSwap 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* ── Hover Lift — unified across all interactive cards ── */

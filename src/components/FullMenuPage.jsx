@@ -12,7 +12,7 @@ export default function FullMenuPage({ onBack, onViewDetail, onOpenCart }) {
   const [gridKey, setGridKey] = useState(0);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   }, []);
 
   const filtered = useMemo(() => {
@@ -130,7 +130,7 @@ export default function FullMenuPage({ onBack, onViewDetail, onOpenCart }) {
 
         {/* Grid */}
         {filtered.length > 0 ? (
-          <div key={gridKey} className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+          <div key={gridKey} className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 anim-grid-swap">
             {filtered.map(item => (
               <DishCard
                 key={item.id}

@@ -1,4 +1,4 @@
-import DishCard, { PopularCard } from './DishCard';
+import { PopularCard } from './DishCard';
 import { ChefHat } from 'lucide-react';
 import { menuItems } from '../data/mockData';
 import { useStore } from '../context/StoreContext';
@@ -6,7 +6,7 @@ import useInView from '../hooks/useInView';
 
 const stagger = ['stagger-1', 'stagger-2', 'stagger-3'];
 
-export default function Menu({ onViewDetail, onOpenCart, onOpenFullMenu }) {
+export default function Menu({ onViewDetail, onOpenFullMenu }) {
   const { favourites, handleAddToCart, handleToggleFav } = useStore();
   const [headerRef, headerVisible] = useInView();
   const [gridRef, gridVisible] = useInView({ threshold: 0.08 });

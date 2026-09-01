@@ -5,23 +5,15 @@ import { downloadPassAsImage } from '../utils/downloadPass';
 export default function ReservationSection() {
   const [step, setStep] = useState(1); // 1 = party+date, 2 = time+contact
   const [partySize, setPartySize] = useState(2);
-  const [selectedDate, setSelectedDate] = useState('');
-  const [selectedTime, setSelectedTime] = useState('');
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [nameError, setNameError] = useState('');
-  const [phoneError, setPhoneError] = useState('');
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
   const dates = useMemo(() => {
     const arr = [];
+    const today = new Date();
     for (let i = 0; i < 7; i++) {
-      const d = new Date();
-      d.setDate(d.getDate() + i);
+      const d = new Date(today);
+      d.setDate(today.getDate() + i);
       arr.push({
         id: d.toISOString().split('T')[0],
-        dayName: i === 0 ? 'Today' : i === 1 ? 'Tmrw' : d.toLocaleDateString('en-US', { weekday: 'short' }),
+        dayName: i === 0 ? 'Today' : d.toLocaleDateString('en-US', { weekday: 'short' }),
         dateNum: d.getDate(),
         month: d.toLocaleDateString('en-US', { month: 'short' }),
         fullDateString: d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
@@ -30,9 +22,14 @@ export default function ReservationSection() {
     return arr;
   }, []);
 
-  useMemo(() => {
-    if (!selectedDate && dates.length > 0) setSelectedDate(dates[0].id);
-  }, [dates, selectedDate]);
+  const [selectedDate, setSelectedDate] = useState(() => dates[0]?.id || '');
+  const [selectedTime, setSelectedTime] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [nameError, setNameError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const lunchSlots = [
     { time: '12:00 PM', status: 'Available' },

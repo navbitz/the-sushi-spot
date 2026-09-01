@@ -5,10 +5,12 @@ import { useStore } from '../context/StoreContext';
 export default function OrderTrackerModal({ isOpen, onClose, finalTotal }) {
   const { cartItems } = useStore();
   const [step, setStep] = useState(0);
+  const [orderId, setOrderId] = useState('SS-1001');
 
   useEffect(() => {
     if (isOpen) {
       setStep(0);
+      setOrderId(`SS-${Math.floor(1000 + Math.random() * 9000)}`);
       const t1 = setTimeout(() => setStep(1), 2000);
       const t2 = setTimeout(() => setStep(2), 5000);
       const t3 = setTimeout(() => setStep(3), 8500);
@@ -19,7 +21,7 @@ export default function OrderTrackerModal({ isOpen, onClose, finalTotal }) {
   if (!isOpen) return null;
 
   const whatsappMsg = encodeURIComponent(
-    `*Order #SS-${Math.floor(1000 + Math.random() * 9000)}*\n` +
+    `*Order #${orderId}*\n` +
     `Status: Preparing\n\n` +
     cartItems.map(i => `• ${i.name} × ${i.quantity}`).join('\n') +
     `\n\nTotal Paid: ₹${finalTotal.toFixed(2)}`
@@ -52,7 +54,7 @@ export default function OrderTrackerModal({ isOpen, onClose, finalTotal }) {
           <p className="text-[11px] font-800 tracking-widest text-[var(--color-terracotta-light)] uppercase mb-1">
             Order Confirmed
           </p>
-          <h2 id="tracker-title" className="text-2xl font-900">#SS-{Math.floor(1000 + Math.random() * 9000)}</h2>
+          <h2 id="tracker-title" className="text-2xl font-900">#{orderId}</h2>
         </div>
 
         {/* Tracker Steps */}

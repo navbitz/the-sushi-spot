@@ -1,4 +1,4 @@
-import { MapPin, Clock, Phone, Navigation } from 'lucide-react';
+import { Navigation } from 'lucide-react';
 import useInView from '../hooks/useInView';
 
 export default function Location() {

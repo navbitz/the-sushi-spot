@@ -1,7 +1,7 @@
-import { ArrowRight, CalendarDays, Users, Fish, ChefHat, Star, Tag, ShoppingBag, Bike } from 'lucide-react';
+import { Tag, ShoppingBag, Bike } from 'lucide-react';
 import useInView from '../hooks/useInView';
 
-export default function Hero({ onOpenReservation }) {
+export default function Hero() {
   const [contentRef, contentVisible] = useInView({ threshold: 0.1 });
   const [imgRef, imgVisible] = useInView({ threshold: 0.1 });
   const [stripRef, stripVisible] = useInView({ threshold: 0.1 });

@@ -1,4 +1,4 @@
-import { Tag, ArrowRight } from 'lucide-react';
+import { Tag } from 'lucide-react';
 
 export default function Offers() {
   const deals = [
@@ -30,7 +30,7 @@ export default function Offers() {
     <section className="py-20 lg:py-24 bg-[var(--color-cream)] transition-colors">
       <div className="max-w-6xl mx-auto px-5 lg:px-14">
         <div className="grid md:grid-cols-2 gap-6">
-          {deals.map((deal, index) => (
+          {deals.map((deal) => (
             <div
               key={deal.id}
               className="rounded-3xl p-8 relative overflow-hidden group border border-black/5 dark:border-white/10 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"

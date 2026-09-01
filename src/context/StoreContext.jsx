@@ -7,7 +7,7 @@ export function StoreProvider({ children }) {
     try {
       const localData = localStorage.getItem('sushiCart');
       return localData ? JSON.parse(localData) : [];
-    } catch (e) {
+    } catch {
       return [];
     }
   });
@@ -16,7 +16,7 @@ export function StoreProvider({ children }) {
     try {
       const localData = localStorage.getItem('sushiFavs');
       return localData ? JSON.parse(localData) : [];
-    } catch (e) {
+    } catch {
       return [];
     }
   });

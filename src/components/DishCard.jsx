@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Heart, Plus, Check, Info, ShoppingBag } from 'lucide-react';
+import { Heart, Plus, Check, Info } from 'lucide-react';
 
 /* ── Green dot = Veg  |  Red dot = Non-Veg  (Indian FSSAI standard) ── */
 function VegBadge({ isVeg }) {

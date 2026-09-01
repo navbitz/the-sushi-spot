@@ -116,10 +116,9 @@ export default function ReservationSection() {
       <div className="max-w-6xl mx-auto px-5 lg:px-8 relative z-10">
 
         {/* Header */}
-        {/* Header */}
         <div className="text-center mb-10">
           <p className="section-eyebrow">Book a Table</p>
-          <h2 className="section-title text-3xl md:text-4xl font-900 mt-2 text-[var(--color-dark)] opacity-100">
+          <h2 className="text-3xl md:text-4xl font-900 mt-2 text-[var(--color-dark)]" style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>
             Reserve Your Experience
           </h2>
         </div>

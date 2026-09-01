@@ -32,13 +32,14 @@ export default function Hero() {
           {/* Right Side Background Circle */}
           <div className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/4 w-[400px] h-[400px] lg:w-[580px] lg:h-[580px] xl:w-[680px] xl:h-[680px] bg-[var(--color-terracotta-pale)] rounded-full z-0 transition-colors" />
 
-          {/* susususu.png — Sushi Hero Image */}
+          {/* susususu.png — Sushi Hero Image (STAR OF THE SHOW) */}
           <img
             src="/img/susususu.png"
             alt="Premium Sushi Nigiri"
             fetchPriority="high"
             decoding="async"
-            className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-[6%] w-[440px] lg:w-[620px] xl:w-[720px] max-w-none object-contain z-10 select-none"
+            className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-[6%] w-[500px] lg:w-[700px] xl:w-[850px] max-w-none object-contain z-10 select-none animate-[spin_60s_linear_infinite]"
+            style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.15))' }}
           />
         </div>
       </div>
@@ -50,8 +51,8 @@ export default function Hero() {
           <div ref={contentRef} data-visible={contentVisible} className="reveal-left">
             {/* Title with inline image */}
             <h1
-              className="text-[44px] sm:text-[70px] md:text-[85px] leading-[1.05] font-900 tracking-tight mb-5 sm:mb-6 relative"
-              style={{ color: 'var(--color-dark)', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}
+              className="text-[44px] sm:text-[70px] md:text-[85px] leading-[1.05] font-900 tracking-tight mb-5 sm:mb-6 relative opacity-100"
+              style={{ color: 'var(--color-dark)', fontFamily: 'var(--font-display)', letterSpacing: '-0.04em' }}
             >
               The Sushi
               <span className="absolute ml-[0.1em] sm:ml-[0.25em]" style={{ transform: 'translateY(-0.05em)' }}>
@@ -60,7 +61,7 @@ export default function Hero() {
                   alt="Dish"
                   fetchPriority="high"
                   decoding="async"
-                  className="w-[1.1em] h-[1.1em] max-w-none rounded-full object-cover shadow-xl bg-[var(--color-cream)]"
+                  className="w-[1.1em] h-[1.1em] max-w-none rounded-full object-cover shadow-xl bg-[var(--color-cream)] animate-[spin_40s_linear_infinite]"
                 />
               </span>
               <br />
@@ -69,8 +70,8 @@ export default function Hero() {
 
             {/* Subtext */}
             <p
-              className="text-[14px] md:text-[15px] leading-[1.7] max-w-[300px] mb-6"
-              style={{ color: 'var(--color-muted)', fontWeight: 500 }}
+              className="text-[14px] md:text-[15px] leading-[1.7] max-w-[300px] mb-6 text-[var(--color-dark)] opacity-75"
+              style={{ fontWeight: 500 }}
             >
               Purest Sushi Experience Focusing on Premium Quality Ingredients.
             </p>
@@ -114,7 +115,8 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-6 lg:px-14 w-full relative z-10 mt-10">
 
         <div className="text-center mb-10">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-900" style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>Why The Sushi Spot ?</h2>
+          <p className="section-eyebrow">Discover</p>
+          <h2 className="section-title text-2xl sm:text-3xl md:text-4xl font-900 opacity-100">Why The Sushi Spot ?</h2>
         </div>
 
         <div ref={stripRef} className="rounded-[40px] p-8 md:p-14 transition-colors" style={{ background: 'var(--color-cream-dark)' }}>
@@ -122,12 +124,12 @@ export default function Hero() {
 
             {/* Feature 1 */}
             <div data-visible={stripVisible} className="reveal-up stagger-1 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 sm:gap-5">
-              <div className="w-[70px] h-[70px] sm:w-[80px] sm:h-[80px] shrink-0 rounded-2xl bg-[#d6e7e1] dark:bg-[var(--color-surface)] flex items-center justify-center overflow-hidden border border-black/5 dark:border-white/5">
+              <div className="w-[70px] h-[70px] sm:w-[80px] sm:h-[80px] shrink-0 rounded-full bg-[#d6e7e1] dark:bg-[var(--color-surface)] flex items-center justify-center overflow-hidden border border-black/5 dark:border-white/5">
                 <Tag className="w-7 h-7 sm:w-8 sm:h-8 text-[#2c7a5b] dark:text-[var(--color-terracotta)]" />
               </div>
               <div>
-                <h4 className="text-[15px] font-800 text-[var(--color-dark)] mb-1 sm:mb-1.5 mt-1 sm:mt-0">Hot Deals & Offers</h4>
-                <p className="text-[13px] text-[var(--color-muted)] font-500 leading-relaxed max-w-[240px] mx-auto sm:mx-0">
+                <h4 className="text-[15px] font-800 text-[var(--color-dark)] mb-1 sm:mb-1.5 mt-1 sm:mt-0 opacity-100">Hot Deals & Offers</h4>
+                <p className="text-[13px] text-[var(--color-dark)] opacity-70 font-500 leading-relaxed max-w-[240px] mx-auto sm:mx-0">
                   We want to show you some love by giving you discounts off food in our restaurants.
                 </p>
               </div>
@@ -135,12 +137,12 @@ export default function Hero() {
 
             {/* Feature 2 */}
             <div data-visible={stripVisible} className="reveal-up stagger-2 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 sm:gap-5">
-              <div className="w-[70px] h-[70px] sm:w-[80px] sm:h-[80px] shrink-0 rounded-2xl bg-[#fbdcd7] dark:bg-[var(--color-surface)] flex items-center justify-center overflow-hidden border border-black/5 dark:border-white/5 p-2">
+              <div className="w-[70px] h-[70px] sm:w-[80px] sm:h-[80px] shrink-0 rounded-full bg-[#fbdcd7] dark:bg-[var(--color-surface)] flex items-center justify-center overflow-hidden border border-black/5 dark:border-white/5 p-2">
                 <ShoppingBag className="w-7 h-7 sm:w-8 sm:h-8 text-[#d45b48] dark:text-[var(--color-terracotta)]" />
               </div>
               <div>
-                <h4 className="text-[15px] font-800 text-[var(--color-dark)] mb-1 sm:mb-1.5 mt-1 sm:mt-0">Self Pick-Up</h4>
-                <p className="text-[13px] text-[var(--color-muted)] font-500 leading-relaxed max-w-[240px] mx-auto sm:mx-0">
+                <h4 className="text-[15px] font-800 text-[var(--color-dark)] mb-1 sm:mb-1.5 mt-1 sm:mt-0 opacity-100">Self Pick-Up</h4>
+                <p className="text-[13px] text-[var(--color-dark)] opacity-70 font-500 leading-relaxed max-w-[240px] mx-auto sm:mx-0">
                   Self Pick-up is a service which allows you to place Self Pick-up orders through our App.
                 </p>
               </div>
@@ -148,12 +150,12 @@ export default function Hero() {
 
             {/* Feature 3 */}
             <div data-visible={stripVisible} className="reveal-up stagger-3 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 sm:gap-5">
-              <div className="w-[70px] h-[70px] sm:w-[80px] sm:h-[80px] shrink-0 rounded-2xl bg-[#e1dfdf] dark:bg-[var(--color-surface)] flex items-center justify-center overflow-hidden border border-black/5 dark:border-white/5 p-2">
+              <div className="w-[70px] h-[70px] sm:w-[80px] sm:h-[80px] shrink-0 rounded-full bg-[#e1dfdf] dark:bg-[var(--color-surface)] flex items-center justify-center overflow-hidden border border-black/5 dark:border-white/5 p-2">
                 <Bike className="w-7 h-7 sm:w-8 sm:h-8 text-[#636363] dark:text-[var(--color-terracotta)]" />
               </div>
               <div>
-                <h4 className="text-[15px] font-800 text-[var(--color-dark)] mb-1 sm:mb-1.5 mt-1 sm:mt-0">Fastest Delivery</h4>
-                <p className="text-[13px] text-[var(--color-muted)] font-500 leading-relaxed max-w-[240px] mx-auto sm:mx-0">
+                <h4 className="text-[15px] font-800 text-[var(--color-dark)] mb-1 sm:mb-1.5 mt-1 sm:mt-0 opacity-100">Fastest Delivery</h4>
+                <p className="text-[13px] text-[var(--color-dark)] opacity-70 font-500 leading-relaxed max-w-[240px] mx-auto sm:mx-0">
                   Choose your food and we'll deliver it as fast as we can. Download the app & enjoy.
                 </p>
               </div>

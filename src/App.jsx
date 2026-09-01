@@ -33,37 +33,42 @@ function App() {
   return (
     <div style={{ minHeight: '100vh', background: 'var(--color-cream)' }} className="text-[var(--color-dark)] max-w-[1920px] mx-auto border-x border-black/5 dark:border-white/5 relative bg-[var(--color-cream)] shadow-[0_0_60px_rgba(0,0,0,0.02)]">
 
-      {showFullMenuPage ? (
+      {/* ── MAIN CONTENT ── */}
+      <div 
+        className="transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        style={{ 
+          opacity: showFullMenuPage ? 0 : 1, 
+          pointerEvents: showFullMenuPage ? 'none' : 'auto' 
+        }}
+      >
+        <Navbar setIsCartOpen={setIsCartOpen} />
+        <main>
+          <Hero />
+          <Menu
+            onViewDetail={setSelectedDish}
+            onOpenCart={() => setIsCartOpen(true)}
+            onOpenFullMenu={() => setShowFullMenuPage(true)}
+          />
+          <ReservationSection />
+          <Reviews />
+          <Location />
+          <FAQ />
+        </main>
+        <Footer />
+      </div>
+
+      {/* ── FULL MENU OVERLAY ── */}
+      <div 
+        id="full-menu-overlay"
+        className={`fixed inset-0 z-50 bg-[var(--color-cream-dark)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] overflow-y-auto ${showFullMenuPage ? 'translate-y-0' : 'translate-y-full'}`}
+      >
         <FullMenuPage
-          onBack={() => {
-            setShowFullMenuPage(false);
-            setTimeout(() => {
-              document.getElementById('menu')?.scrollIntoView({ behavior: 'auto' });
-            }, 10);
-          }}
+          onBack={() => setShowFullMenuPage(false)}
           onViewDetail={setSelectedDish}
           onOpenCart={() => setIsCartOpen(true)}
+          isOpen={showFullMenuPage}
         />
-      ) : (
-        <>
-          <Navbar setIsCartOpen={setIsCartOpen} />
-
-          <main>
-            <Hero />
-            <Menu
-              onViewDetail={setSelectedDish}
-              onOpenCart={() => setIsCartOpen(true)}
-              onOpenFullMenu={() => setShowFullMenuPage(true)}
-            />
-            <ReservationSection />
-            <Reviews />
-            <Location />
-            <FAQ />
-          </main>
-
-          <Footer />
-        </>
-      )}
+      </div>
 
       {/* Global Modals — always mounted so cart/dish state persists across views */}
       <CartDrawer

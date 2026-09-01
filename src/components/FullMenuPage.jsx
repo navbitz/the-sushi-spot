@@ -4,7 +4,7 @@ import DishCard from './DishCard';
 import { menuItems, categories } from '../data/mockData';
 import { useStore } from '../context/StoreContext';
 
-export default function FullMenuPage({ onBack, onViewDetail, onOpenCart }) {
+export default function FullMenuPage({ onBack, onViewDetail, onOpenCart, isOpen }) {
   const { cartItems, favourites, handleAddToCart, handleToggleFav } = useStore();
 
   const [activeCategory, setActiveCategory] = useState('All');
@@ -12,8 +12,10 @@ export default function FullMenuPage({ onBack, onViewDetail, onOpenCart }) {
   const [gridKey, setGridKey] = useState(0);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    if (isOpen) {
+      document.getElementById('full-menu-overlay')?.scrollTo(0, 0);
+    }
+  }, [isOpen]);
 
   const filtered = useMemo(() => {
     return menuItems.filter(item => {

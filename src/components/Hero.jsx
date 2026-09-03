@@ -117,43 +117,43 @@ export default function Hero() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-900" style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>Why The Sushi Spot ?</h2>
         </div>
 
-        <div ref={stripRef} className="rounded-[40px] p-8 md:p-14 transition-colors" style={{ background: 'var(--color-cream-dark)' }}>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        <div ref={stripRef} className="rounded-[30px] sm:rounded-[40px] p-6 sm:p-8 md:p-14 transition-colors" style={{ background: 'var(--color-cream-dark)' }}>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12">
 
             {/* Feature 1 */}
-            <div data-visible={stripVisible} className="reveal-up stagger-1 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 sm:gap-5">
-              <div className="w-[70px] h-[70px] sm:w-[80px] sm:h-[80px] shrink-0 rounded-2xl bg-[#d6e7e1] dark:bg-[var(--color-surface)] flex items-center justify-center overflow-hidden border border-black/5 dark:border-white/5">
-                <Tag className="w-7 h-7 sm:w-8 sm:h-8 text-[#2c7a5b] dark:text-[var(--color-terracotta)]" />
+            <div data-visible={stripVisible} className="reveal-up stagger-1 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 sm:gap-5">
+              <div className="w-[56px] h-[56px] sm:w-[80px] sm:h-[80px] shrink-0 rounded-2xl bg-[#d6e7e1] dark:bg-[var(--color-surface)] flex items-center justify-center overflow-hidden border border-black/5 dark:border-white/5">
+                <Tag className="w-6 h-6 sm:w-8 sm:h-8 text-[#2c7a5b] dark:text-[var(--color-terracotta)]" />
               </div>
               <div>
-                <h4 className="text-[15px] font-800 text-[var(--color-dark)] mb-1 sm:mb-1.5 mt-1 sm:mt-0">Hot Deals & Offers</h4>
-                <p className="text-[13px] text-[var(--color-muted)] font-500 leading-relaxed max-w-[240px] mx-auto sm:mx-0">
+                <h4 className="text-[14px] sm:text-[15px] font-800 text-[var(--color-dark)] mb-1 sm:mb-1.5 mt-1 sm:mt-0">Hot Deals & Offers</h4>
+                <p className="text-[12px] sm:text-[13px] text-[var(--color-muted)] font-500 leading-relaxed max-w-[240px] mx-auto sm:mx-0">
                   We want to show you some love by giving you discounts off food in our restaurants.
                 </p>
               </div>
             </div>
 
             {/* Feature 2 */}
-            <div data-visible={stripVisible} className="reveal-up stagger-2 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 sm:gap-5">
-              <div className="w-[70px] h-[70px] sm:w-[80px] sm:h-[80px] shrink-0 rounded-2xl bg-[#fbdcd7] dark:bg-[var(--color-surface)] flex items-center justify-center overflow-hidden border border-black/5 dark:border-white/5 p-2">
-                <ShoppingBag className="w-7 h-7 sm:w-8 sm:h-8 text-[#d45b48] dark:text-[var(--color-terracotta)]" />
+            <div data-visible={stripVisible} className="reveal-up stagger-2 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 sm:gap-5">
+              <div className="w-[56px] h-[56px] sm:w-[80px] sm:h-[80px] shrink-0 rounded-2xl bg-[#fbdcd7] dark:bg-[var(--color-surface)] flex items-center justify-center overflow-hidden border border-black/5 dark:border-white/5 p-2">
+                <ShoppingBag className="w-6 h-6 sm:w-8 sm:h-8 text-[#d45b48] dark:text-[var(--color-terracotta)]" />
               </div>
               <div>
-                <h4 className="text-[15px] font-800 text-[var(--color-dark)] mb-1 sm:mb-1.5 mt-1 sm:mt-0">Self Pick-Up</h4>
-                <p className="text-[13px] text-[var(--color-muted)] font-500 leading-relaxed max-w-[240px] mx-auto sm:mx-0">
+                <h4 className="text-[14px] sm:text-[15px] font-800 text-[var(--color-dark)] mb-1 sm:mb-1.5 mt-1 sm:mt-0">Self Pick-Up</h4>
+                <p className="text-[12px] sm:text-[13px] text-[var(--color-muted)] font-500 leading-relaxed max-w-[240px] mx-auto sm:mx-0">
                   Self Pick-up is a service which allows you to place Self Pick-up orders through our App.
                 </p>
               </div>
             </div>
 
             {/* Feature 3 */}
-            <div data-visible={stripVisible} className="reveal-up stagger-3 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 sm:gap-5">
-              <div className="w-[70px] h-[70px] sm:w-[80px] sm:h-[80px] shrink-0 rounded-2xl bg-[#e1dfdf] dark:bg-[var(--color-surface)] flex items-center justify-center overflow-hidden border border-black/5 dark:border-white/5 p-2">
-                <Bike className="w-7 h-7 sm:w-8 sm:h-8 text-[#636363] dark:text-[var(--color-terracotta)]" />
+            <div data-visible={stripVisible} className="reveal-up stagger-3 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 sm:gap-5">
+              <div className="w-[56px] h-[56px] sm:w-[80px] sm:h-[80px] shrink-0 rounded-2xl bg-[#e1dfdf] dark:bg-[var(--color-surface)] flex items-center justify-center overflow-hidden border border-black/5 dark:border-white/5 p-2">
+                <Bike className="w-6 h-6 sm:w-8 sm:h-8 text-[#636363] dark:text-[var(--color-terracotta)]" />
               </div>
               <div>
-                <h4 className="text-[15px] font-800 text-[var(--color-dark)] mb-1 sm:mb-1.5 mt-1 sm:mt-0">Fastest Delivery</h4>
-                <p className="text-[13px] text-[var(--color-muted)] font-500 leading-relaxed max-w-[240px] mx-auto sm:mx-0">
+                <h4 className="text-[14px] sm:text-[15px] font-800 text-[var(--color-dark)] mb-1 sm:mb-1.5 mt-1 sm:mt-0">Fastest Delivery</h4>
+                <p className="text-[12px] sm:text-[13px] text-[var(--color-muted)] font-500 leading-relaxed max-w-[240px] mx-auto sm:mx-0">
                   Choose your food and we'll deliver it as fast as we can. Download the app & enjoy.
                 </p>
               </div>

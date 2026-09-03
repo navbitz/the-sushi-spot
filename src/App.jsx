@@ -33,7 +33,8 @@ function App() {
   }, []);
 
   const handleOpenFullMenu = (category = 'All') => {
-    setInitialCategory(category);
+    const validCategory = typeof category === 'string' ? category : 'All';
+    setInitialCategory(validCategory);
     setShowFullMenuPage(true);
   };
 

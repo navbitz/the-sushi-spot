@@ -7,16 +7,15 @@ import { useStore } from '../context/StoreContext';
 export default function FullMenuPage({ onBack, onViewDetail, onOpenCart, isOpen, initialCategory }) {
   const { cartItems, favourites, handleAddToCart, handleToggleFav } = useStore();
 
-  const [activeCategory, setActiveCategory] = useState(initialCategory || 'All');
+  const [activeCategory, setActiveCategory] = useState(() => (typeof initialCategory === 'string' ? initialCategory : 'All'));
   const [searchQuery, setSearchQuery] = useState('');
   const [gridKey, setGridKey] = useState(0);
 
   useEffect(() => {
     if (isOpen) {
       document.getElementById('full-menu-overlay')?.scrollTo(0, 0);
-      if (initialCategory) {
-        setActiveCategory(initialCategory);
-      }
+      const catStr = typeof initialCategory === 'string' ? initialCategory : 'All';
+      setActiveCategory(catStr);
     }
   }, [isOpen, initialCategory]);
 

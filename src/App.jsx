@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ReservationSection from './components/ReservationSection';
@@ -23,6 +23,13 @@ function App() {
   const [showFullMenuPage, setShowFullMenuPage] = useState(false);
 
   const { clearCart } = useStore();
+
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleCheckout = (finalTotal) => {
     setCheckoutTotal(finalTotal);

@@ -41,6 +41,15 @@ export function StoreProvider({ children }) {
 
   const handleRemoveItem = (id) => setCartItems(prev => prev.filter(i => i.id !== id));
   
+  const handleRemoveOne = (id) => {
+    setCartItems(prev => {
+      const existing = prev.find(i => i.id === id);
+      if (!existing) return prev;
+      if (existing.quantity === 1) return prev.filter(i => i.id !== id);
+      return prev.map(i => i.id === id ? { ...i, quantity: i.quantity - 1 } : i);
+    });
+  };
+
   const clearCart = () => setCartItems([]);
 
   const handleToggleFav = (id) =>
@@ -51,6 +60,7 @@ export function StoreProvider({ children }) {
     favourites,
     handleAddToCart,
     handleRemoveItem,
+    handleRemoveOne,
     clearCart,
     handleToggleFav
   };

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Heart, Plus, Check, Info } from 'lucide-react';
+import { Heart, Plus, Minus, Check, Info } from 'lucide-react';
+import { useStore } from '../context/StoreContext';
 
 /* ── Green dot = Veg  |  Red dot = Non-Veg  (Indian FSSAI standard) ── */
 function VegBadge({ isVeg }) {
@@ -18,14 +19,22 @@ function VegBadge({ isVeg }) {
 }
 
 /* ─────────────────────── POPULAR CARD (Exact Reference Match) ─────────────────── */
-export function PopularCard({ dish, onAddToCart, onViewDetail }) {
+export function PopularCard({ dish, onViewDetail }) {
   const [justAdded, setJustAdded] = useState(false);
+  const { cartItems, handleAddToCart, handleRemoveOne } = useStore();
+  const cartItem = cartItems.find(i => i.id === dish.id);
+  const qty = cartItem ? cartItem.quantity : 0;
 
   const handleAdd = (e) => {
     e.stopPropagation();
-    onAddToCart(dish);
+    handleAddToCart(dish);
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 1200);
+  };
+
+  const handleRemove = (e) => {
+    e.stopPropagation();
+    handleRemoveOne(dish.id);
   };
 
   return (
@@ -45,27 +54,47 @@ export function PopularCard({ dish, onAddToCart, onViewDetail }) {
         <span className="text-[16px] font-800" style={{ color: 'var(--color-terracotta)' }}>
           ₹{dish.price}
         </span>
-        <button
-          onClick={handleAdd}
-          className={`flex items-center justify-center gap-1.5 h-[44px] px-5 rounded-full text-[13px] font-700 transition-all ${justAdded ? 'bg-[var(--color-success)] text-white shadow-md' : 'btn-accent'}`}
-          aria-label="Add to order"
-        >
-          {justAdded ? <><Check className="w-4 h-4" /> Added</> : <><Plus className="w-4 h-4" /> Add</>}
-        </button>
+        {qty > 0 ? (
+          <div className="flex items-center justify-between h-[44px] w-[110px] rounded-full text-[14px] font-800 bg-[var(--color-terracotta)] text-white shadow-md overflow-hidden">
+            <button onClick={handleRemove} className="flex-1 h-full flex items-center justify-center hover:bg-black/10 transition-colors">
+              <Minus className="w-4 h-4" />
+            </button>
+            <span className="w-5 text-center">{qty}</span>
+            <button onClick={handleAdd} className="flex-1 h-full flex items-center justify-center hover:bg-black/10 transition-colors">
+              <Plus className="w-4 h-4" />
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={handleAdd}
+            className={`flex items-center justify-center gap-1.5 h-[44px] px-5 rounded-full text-[13px] font-700 transition-all ${justAdded ? 'bg-[var(--color-success)] text-white shadow-md' : 'btn-accent'}`}
+            aria-label="Add to order"
+          >
+            {justAdded ? <><Check className="w-4 h-4" /> Added</> : <><Plus className="w-4 h-4" /> Add</>}
+          </button>
+        )}
       </div>
     </div>
   );
 }
 
 /* ─────────────────────── STANDARD GRID CARD ─────────────────────────────── */
-export default function DishCard({ dish, onAddToCart, isFav, onToggleFav, onViewDetail }) {
+export default function DishCard({ dish, isFav, onToggleFav, onViewDetail }) {
   const [justAdded, setJustAdded] = useState(false);
+  const { cartItems, handleAddToCart, handleRemoveOne } = useStore();
+  const cartItem = cartItems.find(i => i.id === dish.id);
+  const qty = cartItem ? cartItem.quantity : 0;
 
   const handleAdd = (e) => {
     e.stopPropagation();
-    onAddToCart(dish);
+    handleAddToCart(dish);
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 1200);
+  };
+
+  const handleRemove = (e) => {
+    e.stopPropagation();
+    handleRemoveOne(dish.id);
   };
 
   return (
@@ -135,12 +164,24 @@ export default function DishCard({ dish, onAddToCart, isFav, onToggleFav, onView
           <span className="text-[15px] sm:text-[18px] font-800" style={{ color: 'var(--color-terracotta)' }}>
             ₹{dish.price}
           </span>
-          <button
-            onClick={handleAdd}
-            className={`flex items-center justify-center gap-1 sm:gap-1.5 h-[38px] sm:h-[44px] px-3 sm:px-5 rounded-full text-[12px] sm:text-[13px] font-700 transition-all ${justAdded ? 'bg-[var(--color-success)] text-white shadow-md' : 'btn-accent'}`}
-          >
-            {justAdded ? <><Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> <span className="hidden sm:inline">Added</span></> : <><Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> <span className="hidden sm:inline">Add</span></>}
-          </button>
+          {qty > 0 ? (
+            <div className="flex items-center justify-between h-[38px] sm:h-[44px] w-[90px] sm:w-[110px] rounded-full text-[13px] sm:text-[14px] font-800 bg-[var(--color-terracotta)] text-white shadow-md overflow-hidden">
+              <button onClick={handleRemove} className="flex-1 h-full flex items-center justify-center hover:bg-black/10 transition-colors">
+                <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </button>
+              <span className="w-5 text-center">{qty}</span>
+              <button onClick={handleAdd} className="flex-1 h-full flex items-center justify-center hover:bg-black/10 transition-colors">
+                <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={handleAdd}
+              className={`flex items-center justify-center gap-1 sm:gap-1.5 h-[38px] sm:h-[44px] px-3 sm:px-5 rounded-full text-[12px] sm:text-[13px] font-700 transition-all ${justAdded ? 'bg-[var(--color-success)] text-white shadow-md' : 'btn-accent'}`}
+            >
+              {justAdded ? <><Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> <span className="hidden sm:inline">Added</span></> : <><Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> <span className="hidden sm:inline">Add</span></>}
+            </button>
+          )}
         </div>
       </div>
     </div>

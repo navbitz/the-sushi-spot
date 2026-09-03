@@ -55,7 +55,7 @@ function App() {
           pointerEvents: showFullMenuPage ? 'none' : 'auto' 
         }}
       >
-        <Navbar setIsCartOpen={setIsCartOpen} onOpenFullMenu={handleOpenFullMenu} />
+        <Navbar setIsCartOpen={setIsCartOpen} />
         <main>
           <Hero />
           <Menu

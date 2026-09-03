@@ -7,17 +7,23 @@ import { useStore } from '../context/StoreContext';
 export default function FullMenuPage({ onBack, onViewDetail, onOpenCart, isOpen, initialCategory }) {
   const { cartItems, favourites, handleAddToCart, handleToggleFav } = useStore();
 
-  const [activeCategory, setActiveCategory] = useState(() => (typeof initialCategory === 'string' ? initialCategory : 'All'));
+  const targetCategory = typeof initialCategory === 'string' ? initialCategory : 'All';
+  const [activeCategory, setActiveCategory] = useState(targetCategory);
+  const [prevInitial, setPrevInitial] = useState(initialCategory);
+
+  if (initialCategory !== prevInitial) {
+    setPrevInitial(initialCategory);
+    setActiveCategory(targetCategory);
+  }
+
   const [searchQuery, setSearchQuery] = useState('');
   const [gridKey, setGridKey] = useState(0);
 
   useEffect(() => {
     if (isOpen) {
       document.getElementById('full-menu-overlay')?.scrollTo(0, 0);
-      const catStr = typeof initialCategory === 'string' ? initialCategory : 'All';
-      setActiveCategory(catStr);
     }
-  }, [isOpen, initialCategory]);
+  }, [isOpen]);
 
   const allCategories = useMemo(() => {
     return ['All', '❤️ Favorites', '🌿 Veg', ...categories.filter(c => c !== 'All' && c !== '🌿 Veg')];

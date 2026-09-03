@@ -1,26 +1,34 @@
 import { useState, useMemo, useEffect } from 'react';
-import { Search, X, ArrowRight, ArrowLeft, ShoppingBag } from 'lucide-react';
+import { Search, X, ArrowRight, ArrowLeft, ShoppingBag, Heart } from 'lucide-react';
 import DishCard from './DishCard';
 import { menuItems, categories } from '../data/mockData';
 import { useStore } from '../context/StoreContext';
 
-export default function FullMenuPage({ onBack, onViewDetail, onOpenCart, isOpen }) {
+export default function FullMenuPage({ onBack, onViewDetail, onOpenCart, isOpen, initialCategory }) {
   const { cartItems, favourites, handleAddToCart, handleToggleFav } = useStore();
 
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState(initialCategory || 'All');
   const [searchQuery, setSearchQuery] = useState('');
   const [gridKey, setGridKey] = useState(0);
 
   useEffect(() => {
     if (isOpen) {
       document.getElementById('full-menu-overlay')?.scrollTo(0, 0);
+      if (initialCategory) {
+        setActiveCategory(initialCategory);
+      }
     }
-  }, [isOpen]);
+  }, [isOpen, initialCategory]);
+
+  const allCategories = useMemo(() => {
+    return ['All', '❤️ Favorites', '🌿 Veg', ...categories.filter(c => c !== 'All' && c !== '🌿 Veg')];
+  }, []);
 
   const filtered = useMemo(() => {
     return menuItems.filter(item => {
       let matchCat = false;
       if (activeCategory === 'All') matchCat = true;
+      else if (activeCategory === '❤️ Favorites') matchCat = favourites.includes(item.id);
       else if (activeCategory === '🌿 Veg') matchCat = item.isVeg;
       else matchCat = item.category === activeCategory;
 
@@ -28,7 +36,7 @@ export default function FullMenuPage({ onBack, onViewDetail, onOpenCart, isOpen 
       const matchSearch = !q || item.name.toLowerCase().includes(q) || item.description.toLowerCase().includes(q);
       return matchCat && matchSearch;
     });
-  }, [activeCategory, searchQuery]);
+  }, [activeCategory, searchQuery, favourites]);
 
   const cartCount = cartItems.reduce((acc, i) => acc + i.quantity, 0);
   const cartSubtotal = cartItems.reduce((acc, i) => acc + i.price * i.quantity, 0);
@@ -57,7 +65,21 @@ export default function FullMenuPage({ onBack, onViewDetail, onOpenCart, isOpen 
           Full Menu
         </h1>
 
-        <div className="ml-auto">
+        <div className="ml-auto flex items-center gap-3">
+          <button
+            onClick={() => { setActiveCategory('❤️ Favorites'); setGridKey(k => k + 1); }}
+            className="relative p-1.5 rounded-full text-[var(--color-dark)] hover:text-[var(--color-terracotta)] transition-colors"
+            aria-label="View Favorites"
+            title="View Favorites"
+          >
+            <Heart className={`w-5 h-5 ${favourites.length > 0 ? 'fill-[var(--color-terracotta)] text-[var(--color-terracotta)]' : ''}`} />
+            {favourites.length > 0 && (
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-[var(--color-terracotta)] text-white text-[10px] font-900 rounded-full flex items-center justify-center border border-white">
+                {favourites.length}
+              </span>
+            )}
+          </button>
+
           <button
             onClick={onOpenCart}
             className="relative flex items-center gap-2 text-[13px] font-700 text-[var(--color-dark)] hover:text-[var(--color-terracotta)] transition-colors"
@@ -98,13 +120,13 @@ export default function FullMenuPage({ onBack, onViewDetail, onOpenCart, isOpen 
 
         {/* Category tabs */}
         <div className="flex gap-2 overflow-x-auto pb-3 mb-6" style={{ scrollbarWidth: 'none' }}>
-          {categories.map(cat => (
+          {allCategories.map(cat => (
             <button
               key={cat}
               onClick={() => { setActiveCategory(cat); setGridKey(k => k + 1); }}
               className={`filter-tab whitespace-nowrap ${activeCategory === cat ? 'active' : ''}`}
             >
-              {cat}
+              {cat === '❤️ Favorites' ? `❤️ Favorites (${favourites.length})` : cat}
             </button>
           ))}
         </div>
@@ -147,7 +169,9 @@ export default function FullMenuPage({ onBack, onViewDetail, onOpenCart, isOpen 
         ) : (
           <div className="py-20 text-center rounded-2xl bg-[var(--color-surface)] transition-colors">
             <p className="text-[15px] mb-3" style={{ color: 'var(--color-muted)' }}>
-              No results for &ldquo;{searchQuery}&rdquo;
+              {activeCategory === '❤️ Favorites'
+                ? 'No favorites saved yet! Click the ❤️ icon on any dish to save it here.'
+                : `No results for "${searchQuery || activeCategory}"`}
             </p>
             <button
               onClick={() => { setSearchQuery(''); setActiveCategory('All'); }}

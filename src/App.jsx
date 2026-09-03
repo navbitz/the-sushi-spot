@@ -21,6 +21,7 @@ function App() {
   const [checkoutTotal, setCheckoutTotal] = useState(0);
   const [isReservationOpen, setIsReservationOpen] = useState(false);
   const [showFullMenuPage, setShowFullMenuPage] = useState(false);
+  const [initialCategory, setInitialCategory] = useState('All');
 
   const { clearCart } = useStore();
 
@@ -30,6 +31,11 @@ function App() {
     }
     window.scrollTo(0, 0);
   }, []);
+
+  const handleOpenFullMenu = (category = 'All') => {
+    setInitialCategory(category);
+    setShowFullMenuPage(true);
+  };
 
   const handleCheckout = (finalTotal) => {
     setCheckoutTotal(finalTotal);
@@ -48,13 +54,13 @@ function App() {
           pointerEvents: showFullMenuPage ? 'none' : 'auto' 
         }}
       >
-        <Navbar setIsCartOpen={setIsCartOpen} />
+        <Navbar setIsCartOpen={setIsCartOpen} onOpenFullMenu={handleOpenFullMenu} />
         <main>
           <Hero />
           <Menu
             onViewDetail={setSelectedDish}
             onOpenCart={() => setIsCartOpen(true)}
-            onOpenFullMenu={() => setShowFullMenuPage(true)}
+            onOpenFullMenu={handleOpenFullMenu}
           />
           <ReservationSection />
           <Reviews />
@@ -74,6 +80,7 @@ function App() {
           onViewDetail={setSelectedDish}
           onOpenCart={() => setIsCartOpen(true)}
           isOpen={showFullMenuPage}
+          initialCategory={initialCategory}
         />
       </div>
 

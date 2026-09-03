@@ -2,7 +2,7 @@ import { ShoppingBag, Menu as MenuIcon, X, Sun, Moon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useStore } from '../context/StoreContext';
 
-export default function Navbar({ setIsCartOpen }) {
+export default function Navbar({ setIsCartOpen, onOpenFullMenu }) {
   const { cartItems } = useStore();
   const cartItemCount = cartItems.reduce((acc, i) => acc + i.quantity, 0);
 

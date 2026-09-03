@@ -162,31 +162,26 @@ export default function FullMenuPage({ onBack, onViewDetail, onOpenCart, isOpen 
         {cartCount > 0 && <div className="h-28" />}
       </div>
 
-      {/* Sticky Bottom Cart Bar */}
+      {/* Floating Bottom Cart Bar */}
       {cartCount > 0 && (
-        <div
-          className="fixed bottom-0 left-0 right-0 z-50 px-4 sm:px-5 lg:px-14 py-4 border-t border-black/5 dark:border-white/10 backdrop-blur-lg"
-          style={{ background: 'var(--color-cream-dark)', opacity: 0.97 }}
-        >
-          <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
+        <div className="sticky bottom-6 left-0 right-0 z-50 px-4 sm:px-5 flex justify-center pointer-events-none mt-8">
+          <div className="pointer-events-auto flex items-center justify-between bg-[#1f2937] dark:bg-[#2A2A2A] rounded-full p-2 pl-6 shadow-2xl w-full max-w-md border border-white/10">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'rgba(224,83,38,0.1)' }}>
-                <span className="font-900 text-base text-[var(--color-terracotta)]">{cartCount}</span>
-              </div>
-              <div>
-                <p className="text-[13px] font-700 text-[var(--color-dark)]">
-                  {cartCount} {cartCount === 1 ? 'item' : 'items'} in cart
-                </p>
-                <p className="text-[11px] font-600" style={{ color: 'var(--color-muted)' }}>
-                  Subtotal: <span style={{ color: 'var(--color-terracotta)' }}>₹{cartSubtotal.toFixed(2)}</span>
-                </p>
+              <ShoppingBag className="w-5 h-5 text-white/90" />
+              <div className="flex flex-col">
+                <span className="text-white font-700 text-[14px] leading-tight">
+                  {cartCount} {cartCount === 1 ? 'Item' : 'Items'}
+                </span>
+                <span className="text-white/70 font-600 text-[12px] leading-tight">
+                  ₹{cartSubtotal.toFixed(2)}
+                </span>
               </div>
             </div>
             <button
               onClick={onOpenCart}
-              className="btn-accent py-3 px-6 rounded-full text-[13px] flex items-center gap-2"
+              className="bg-[var(--color-terracotta)] text-white font-700 text-[13px] px-6 py-2.5 rounded-full flex items-center gap-2 hover:bg-[var(--color-terracotta-light)] transition-colors ml-4"
             >
-              View Cart & Checkout <ArrowRight className="w-4 h-4" />
+              Checkout <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>

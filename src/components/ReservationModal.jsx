@@ -1,6 +1,7 @@
 import { X, CalendarDays, Clock, Users, CheckCircle2, Download } from 'lucide-react';
 import { useState } from 'react';
 import { downloadPassAsImage } from '../utils/downloadPass';
+import FocusLock from 'react-focus-lock';
 
 export default function ReservationModal({ isOpen, onClose }) {
   const [step, setStep] = useState('form'); // 'form' or 'receipt'
@@ -43,6 +44,7 @@ export default function ReservationModal({ isOpen, onClose }) {
         onClick={handleClose}
       />
       
+      <FocusLock returnFocus>
       {/* Modal */}
       <div className="relative bg-[var(--color-surface)] w-full max-w-md rounded-[32px] shadow-2xl overflow-hidden anim-bounce-in">
         
@@ -135,48 +137,109 @@ export default function ReservationModal({ isOpen, onClose }) {
           </form>
         ) : (
           /* Receipt View */
-          <div className="p-8 text-center flex flex-col items-center">
-            <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
-              <CheckCircle2 className="w-8 h-8" />
+          <div className="p-6 sm:p-7 text-center flex flex-col items-center max-h-[85vh] overflow-y-auto">
+            <div className="w-14 h-14 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full flex items-center justify-center mb-3 ring-8 ring-emerald-500/5">
+              <CheckCircle2 className="w-7 h-7" />
             </div>
             
-            <h3 className="text-2xl font-900 mb-1" style={{ color: 'var(--color-brown)' }}>
+            <h3 className="text-xl sm:text-2xl font-900 mb-0.5" style={{ color: 'var(--color-brown)' }}>
               Booking Confirmed!
             </h3>
-            <p className="text-[14px] mb-6" style={{ color: 'var(--color-muted)' }}>
-              We look forward to hosting you, {formData.name.split(' ')[0]}.
+            <p className="text-[12px] sm:text-[13px] mb-5 font-500" style={{ color: 'var(--color-muted)' }}>
+              We look forward to hosting you, <span className="font-700">{formData.name.split(' ')[0]}</span>.
             </p>
 
-            {/* Ticket Graphic */}
-            <div className="w-full bg-[var(--color-cream)] border-2 border-dashed border-[rgba(212,96,58,0.3)] rounded-xl p-5 relative">
-              {/* Notches */}
-              <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-[var(--color-surface)] rounded-full" />
-              <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-[var(--color-surface)] rounded-full" />
+            {/* VIP Boarding Pass Ticket Graphic */}
+            <div className="w-full bg-white dark:bg-[#221f1c] border border-stone-200 dark:border-stone-700/60 rounded-2xl shadow-lg overflow-hidden relative text-left">
               
-              <div className="flex flex-col gap-3">
-                <div className="flex justify-between items-center border-b border-[rgba(212,96,58,0.1)] pb-3">
-                  <span className="text-[12px] font-700 uppercase" style={{ color: 'var(--color-muted)' }}>Booking ID</span>
-                  <span className="text-[16px] font-900 tracking-wider" style={{ color: 'var(--color-terracotta)' }}>#{bookingId}</span>
-                </div>
+              {/* Pass Header */}
+              <div className="bg-stone-900 text-white p-4 relative overflow-hidden flex justify-between items-center">
+                {/* Kanji Watermark */}
+                <span className="absolute -right-2 -bottom-4 text-white/5 text-6xl font-serif select-none pointer-events-none">
+                  鮨
+                </span>
                 
-                <div className="grid grid-cols-2 gap-4 text-left pt-1">
-                  <div>
-                    <span className="block text-[11px] font-700 uppercase mb-0.5" style={{ color: 'var(--color-muted)' }}>Date</span>
-                    <span className="block text-[14px] font-800" style={{ color: 'var(--color-brown)' }}>{formData.date}</span>
+                <div>
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <span className="w-2 h-2 rounded-full bg-[var(--color-terracotta)] inline-block animate-pulse" />
+                    <span className="text-[10px] font-800 tracking-wider text-[var(--color-terracotta)] uppercase">
+                      Official Dining Pass
+                    </span>
                   </div>
+                  <h4 className="font-display font-800 text-[16px] tracking-tight">The Sushi Spot</h4>
+                  <p className="text-[10px] text-stone-400 font-500">Mylapore, Chennai</p>
+                </div>
+
+                <div className="bg-[var(--color-terracotta)]/20 border border-[var(--color-terracotta)]/40 px-2.5 py-1 rounded-full text-right">
+                  <span className="text-[10px] font-800 text-[#FF9D7E] uppercase tracking-wider block">★ VIP PASS</span>
+                </div>
+              </div>
+
+              {/* Dashed Perforation with Side Cutout Notches */}
+              <div className="relative h-6 bg-[var(--color-cream-dark)] dark:bg-[#1a1715] flex items-center justify-center">
+                <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-5 h-5 bg-[var(--color-surface)] rounded-full border-r border-stone-300 dark:border-stone-700" />
+                <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-5 h-5 bg-[var(--color-surface)] rounded-full border-l border-stone-300 dark:border-stone-700" />
+                <div className="w-full border-b-2 border-dashed border-stone-300 dark:border-stone-700 mx-5" />
+              </div>
+
+              {/* Pass Body Content */}
+              <div className="p-4 sm:p-5 flex flex-col gap-4 bg-white dark:bg-[#221f1c]">
+                
+                {/* Booking ID Banner */}
+                <div className="bg-[var(--color-terracotta-pale)] dark:bg-[var(--color-terracotta)]/10 border border-[var(--color-terracotta)]/20 p-3 rounded-xl flex items-center justify-between">
                   <div>
-                    <span className="block text-[11px] font-700 uppercase mb-0.5" style={{ color: 'var(--color-muted)' }}>Time</span>
-                    <span className="block text-[14px] font-800" style={{ color: 'var(--color-brown)' }}>{formData.time}</span>
+                    <span className="block text-[9px] font-800 uppercase tracking-widest text-[var(--color-muted)]">Reservation Ref</span>
+                    <span className="text-[18px] font-900 tracking-wider font-mono text-[var(--color-terracotta)]">#{bookingId}</span>
                   </div>
-                  <div className="col-span-2">
-                    <span className="block text-[11px] font-700 uppercase mb-0.5" style={{ color: 'var(--color-muted)' }}>Guests</span>
-                    <span className="block text-[14px] font-800" style={{ color: 'var(--color-brown)' }}>{formData.guests} People</span>
+                  <span className="bg-emerald-600 text-white text-[10px] font-800 px-2.5 py-1 rounded-full shadow-sm">
+                    ✓ CONFIRMED
+                  </span>
+                </div>
+
+                {/* 2-Column Data Grid */}
+                <div className="grid grid-cols-2 gap-3 text-left">
+                  <div className="bg-stone-50 dark:bg-stone-800/40 p-2.5 rounded-lg border border-stone-100 dark:border-stone-800">
+                    <span className="block text-[10px] font-700 uppercase text-[var(--color-muted)] mb-0.5">Guest Name</span>
+                    <span className="block text-[13px] font-800 truncate" style={{ color: 'var(--color-brown)' }}>{formData.name}</span>
+                  </div>
+                  
+                  <div className="bg-stone-50 dark:bg-stone-800/40 p-2.5 rounded-lg border border-stone-100 dark:border-stone-800">
+                    <span className="block text-[10px] font-700 uppercase text-[var(--color-muted)] mb-0.5">Party Size</span>
+                    <span className="block text-[13px] font-800" style={{ color: 'var(--color-brown)' }}>{formData.guests} {Number(formData.guests) === 1 ? 'Guest' : 'Guests'}</span>
+                  </div>
+                  
+                  <div className="bg-stone-50 dark:bg-stone-800/40 p-2.5 rounded-lg border border-stone-100 dark:border-stone-800">
+                    <span className="block text-[10px] font-700 uppercase text-[var(--color-muted)] mb-0.5">Date</span>
+                    <span className="block text-[13px] font-800" style={{ color: 'var(--color-brown)' }}>{formData.date}</span>
+                  </div>
+                  
+                  <div className="bg-stone-50 dark:bg-stone-800/40 p-2.5 rounded-lg border border-stone-100 dark:border-stone-800">
+                    <span className="block text-[10px] font-700 uppercase text-[var(--color-muted)] mb-0.5">Time</span>
+                    <span className="block text-[13px] font-800" style={{ color: 'var(--color-brown)' }}>{formData.time}</span>
                   </div>
                 </div>
+
+                {/* Simulated Barcode */}
+                <div className="pt-2 border-t border-stone-100 dark:border-stone-800 flex flex-col items-center gap-1">
+                  <div className="h-8 w-full flex items-center justify-between overflow-hidden opacity-75">
+                    {[3, 1, 2, 4, 1, 3, 2, 1, 4, 2, 1, 3, 4, 1, 2, 3, 1, 4, 2, 1, 3, 2, 4, 1].map((w, idx) => (
+                      <div 
+                        key={idx} 
+                        className="h-full bg-stone-800 dark:bg-stone-200" 
+                        style={{ width: `${w * 2}px` }} 
+                      />
+                    ))}
+                  </div>
+                  <span className="text-[9px] font-mono text-[var(--color-muted)] tracking-widest">
+                    * {bookingId} * VALIDATION CODE
+                  </span>
+                </div>
+
               </div>
             </div>
 
-            <div className="flex gap-3 w-full mt-6">
+            {/* Action Buttons */}
+            <div className="flex gap-3 w-full mt-5">
               <button 
                 onClick={() => downloadPassAsImage({
                   bookingId,
@@ -185,17 +248,18 @@ export default function ReservationModal({ isOpen, onClose }) {
                   time: formData.time,
                   guests: formData.guests
                 })}
-                className="btn-accent flex-1 justify-center py-2.5 flex items-center gap-2 text-[13px]"
+                className="btn-accent flex-1 justify-center py-3 flex items-center gap-2 text-[13px] shadow-lg shadow-[var(--color-terracotta)]/20 active:scale-[0.98] transition-transform"
               >
-                <Download className="w-4 h-4" /> Download Pass
+                <Download className="w-4 h-4" /> Download Pass (PNG)
               </button>
-              <button onClick={handleClose} className="btn-outline flex-1 justify-center py-2.5 text-[13px]">
+              <button onClick={handleClose} className="btn-outline flex-1 justify-center py-3 text-[13px]">
                 Close
               </button>
             </div>
           </div>
         )}
       </div>
+      </FocusLock>
     </div>
   );
 }

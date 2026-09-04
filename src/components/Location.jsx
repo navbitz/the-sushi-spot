@@ -33,22 +33,22 @@ export default function Location() {
   ];
 
   return (
-    <section id="location" className="py-20 lg:py-24 bg-[var(--color-cream)] transition-colors">
+    <section id="location" className="py-12 lg:py-24 bg-[var(--color-cream)] transition-colors">
       {/* Leaf decoration */}
       <img
-        src="/img/leaf-branch-3.png" alt="" aria-hidden="true" loading="lazy"
+        src="/img/leaf-branch-3.webp" alt="" aria-hidden="true" loading="lazy"
         className="absolute left-0 bottom-10 w-28 opacity-20 pointer-events-none"
         style={{ transform: 'scaleX(-1)' }}
       />
       <img
-        src="/img/leaf-branch-4.png" alt="" aria-hidden="true" loading="lazy"
+        src="/img/leaf-branch-4.webp" alt="" aria-hidden="true" loading="lazy"
         className="absolute right-0 top-16 w-24 opacity-15 pointer-events-none"
       />
 
       <div className="max-w-6xl mx-auto px-5 lg:px-14">
 
         {/* Section header */}
-        <div ref={headerRef} data-visible={headerVisible} className="reveal-up text-center mb-12">
+        <div ref={headerRef} data-visible={headerVisible} className="reveal-up text-center mb-8 sm:mb-12">
           <p className="section-eyebrow">Visit Us</p>
           <h2
             className="text-4xl lg:text-5xl font-900 mt-2 mb-3 text-[var(--color-dark)]"
@@ -70,7 +70,7 @@ export default function Location() {
           {/* ── Map embed (3/5 width) ── */}
           <div ref={mapRef} data-visible={mapVisible} className="reveal-left lg:col-span-3 rounded-[32px] overflow-hidden shadow-sm border border-black/5 dark:border-white/10 relative group">
             <div className="absolute inset-0 bg-black/10 dark:bg-white/5 pointer-events-none z-10 transition-colors"></div>
-            <div className="map-container h-[400px] lg:h-full min-h-[380px] bg-[var(--color-cream-dark)] relative flex items-center justify-center">
+            <div className="map-container h-[240px] md:h-[400px] lg:h-full min-h-[240px] md:min-h-[380px] bg-[var(--color-cream-dark)] relative flex items-center justify-center">
               {!mapVisible && (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-8 h-8 border-4 border-[var(--color-terracotta)] border-t-transparent rounded-full animate-spin opacity-50" />
@@ -81,7 +81,7 @@ export default function Location() {
                   src={MAPS_EMBED}
                   width="100%"
                   height="100%"
-                  style={{ border: 0, minHeight: '380px', display: 'block' }}
+                  style={{ border: 0, minHeight: '100%', display: 'block' }}
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -94,13 +94,13 @@ export default function Location() {
 
           {/* ── Info card (2/5 width) ── */}
           <div ref={infoRef} data-visible={infoVisible} className="reveal-right stagger-2 lg:col-span-2">
-            <div className="bg-[var(--color-surface)] rounded-[32px] p-8 lg:p-12 shadow-sm border border-black/5 dark:border-white/10 flex flex-col justify-center transition-colors h-full">
+            <div className="bg-[var(--color-surface)] rounded-[32px] p-6 md:p-8 lg:p-12 shadow-sm border border-black/5 dark:border-white/10 flex flex-col justify-center transition-colors h-full">
 
               {/* Header */}
               <div className="mb-8">
                 <div className="flex items-center gap-3 mb-1">
                   <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-black/5 dark:bg-white/10 text-[var(--color-terracotta)]">
-                    <img src="/img/logo.png" alt="" className="w-6 h-6 object-contain" />
+                    <img src="/img/logo.webp" alt="" className="w-6 h-6 object-contain" />
                   </div>
                   <span className="text-[18px] font-800" style={{ color: 'var(--color-dark)' }}>
                     The Sushi Spot

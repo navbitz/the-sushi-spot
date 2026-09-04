@@ -43,34 +43,34 @@ export function PopularCard({ dish, onViewDetail }) {
         <img src={dish.image} alt={dish.name} loading="lazy" decoding="async" className="transition-transform duration-300 group-hover:scale-105" />
       </div>
 
-      <h3 className="text-[17px] font-800 mb-0.5" style={{ color: 'var(--color-dark)' }}>
+      <h3 className="text-[13px] sm:text-[17px] font-800 mb-0.5 leading-snug" style={{ color: 'var(--color-dark)' }}>
         {dish.name}
       </h3>
-      <p className="text-[11px] mb-5 font-600" style={{ color: 'var(--color-muted)' }}>
+      <p className="text-[10px] sm:text-[11px] mb-1.5 sm:mb-4 font-600" style={{ color: 'var(--color-muted)' }}>
         Japanese Dish
       </p>
 
-      <div className="flex items-center justify-between mt-auto">
-        <span className="text-[16px] font-800" style={{ color: 'var(--color-terracotta)' }}>
+      <div className="flex items-center justify-between mt-1.5 sm:mt-auto">
+        <span className="text-[13px] sm:text-[16px] font-800" style={{ color: 'var(--color-terracotta)' }}>
           ₹{dish.price}
         </span>
         {qty > 0 ? (
-          <div className="flex items-center justify-between h-[44px] w-[110px] rounded-full text-[14px] font-800 bg-[var(--color-terracotta)] text-white shadow-md overflow-hidden">
-            <button onClick={handleRemove} className="flex-1 h-full flex items-center justify-center hover:bg-black/10 transition-colors">
-              <Minus className="w-4 h-4" />
+          <div className="flex items-center justify-between h-[30px] sm:h-[42px] w-[80px] sm:w-[105px] rounded-full text-[11px] sm:text-[13px] font-800 bg-[var(--color-terracotta)] text-white shadow-md overflow-hidden">
+            <button onClick={handleRemove} aria-label="Decrease quantity" className="flex-1 h-full flex items-center justify-center hover:bg-black/10 transition-colors">
+              <Minus className="w-3 h-3 sm:w-4 sm:h-4" />
             </button>
-            <span className="w-5 text-center">{qty}</span>
-            <button onClick={handleAdd} className="flex-1 h-full flex items-center justify-center hover:bg-black/10 transition-colors">
-              <Plus className="w-4 h-4" />
+            <span className="w-4 text-center">{qty}</span>
+            <button onClick={handleAdd} aria-label="Increase quantity" className="flex-1 h-full flex items-center justify-center hover:bg-black/10 transition-colors">
+              <Plus className="w-3 h-3 sm:w-4 sm:h-4" />
             </button>
           </div>
         ) : (
           <button
             onClick={handleAdd}
-            className={`flex items-center justify-center gap-1.5 h-[44px] px-5 rounded-full text-[13px] font-700 transition-all ${justAdded ? 'bg-[var(--color-success)] text-white shadow-md' : 'btn-accent'}`}
+            className={`flex items-center justify-center gap-1 sm:gap-1.5 h-[30px] sm:h-[42px] px-3 sm:px-5 rounded-full text-[10px] sm:text-[13px] font-700 transition-all ${justAdded ? 'bg-[var(--color-success)] text-white shadow-md' : 'btn-accent'}`}
             aria-label="Add to order"
           >
-            {justAdded ? <><Check className="w-4 h-4" /> Added</> : <><Plus className="w-4 h-4" /> Add</>}
+            {justAdded ? <><Check className="w-3 h-3 sm:w-4 sm:h-4" /> Added</> : <><Plus className="w-3 h-3 sm:w-4 sm:h-4" /> Add</>}
           </button>
         )}
       </div>
@@ -79,7 +79,7 @@ export function PopularCard({ dish, onViewDetail }) {
 }
 
 /* ─────────────────────── STANDARD GRID CARD ─────────────────────────────── */
-export default function DishCard({ dish, isFav, onToggleFav, onViewDetail }) {
+export default function DishCard({ dish, isFav, onToggleFav, onViewDetail, showFavIcon = true }) {
   const [justAdded, setJustAdded] = useState(false);
   const { cartItems, handleAddToCart, handleRemoveOne } = useStore();
   const cartItem = cartItems.find(i => i.id === dish.id);
@@ -124,17 +124,19 @@ export default function DishCard({ dish, isFav, onToggleFav, onViewDetail }) {
         )}
 
         {/* Fav */}
-        <button
-          onClick={e => { e.stopPropagation(); onToggleFav(dish.id); }}
-          className={`fav-btn absolute top-3 right-3 z-10 p-1.5 rounded-full ${isFav ? 'active' : ''}`}
-          style={{
-            background: 'rgba(255,255,255,0.85)',
-            color: isFav ? 'var(--color-terracotta)' : '#CCC',
-          }}
-          aria-label={isFav ? 'Remove favourite' : 'Add to favourites'}
-        >
-          <Heart className={`w-4 h-4 ${isFav ? 'fill-current' : ''}`} />
-        </button>
+        {showFavIcon && (
+          <button
+            onClick={e => { e.stopPropagation(); onToggleFav(dish.id); }}
+            className={`fav-btn absolute top-3 right-3 z-10 p-1.5 rounded-full ${isFav ? 'active' : ''}`}
+            style={{
+              background: 'rgba(255,255,255,0.85)',
+              color: isFav ? 'var(--color-terracotta)' : '#CCC',
+            }}
+            aria-label={isFav ? 'Remove favourite' : 'Add to favourites'}
+          >
+            <Heart className={`w-4 h-4 ${isFav ? 'fill-current' : ''}`} />
+          </button>
+        )}
 
         <img
           src={dish.image} alt={dish.name} loading="lazy" decoding="async"
@@ -143,9 +145,9 @@ export default function DishCard({ dish, isFav, onToggleFav, onViewDetail }) {
       </div>
 
       {/* Content */}
-      <div className="p-3 sm:p-5 flex flex-col flex-grow">
+      <div className="p-2.5 sm:p-5 flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-1">
-          <h3 className="text-[14px] sm:text-base font-700 leading-snug" style={{ color: 'var(--color-brown)' }}>
+          <h3 className="text-[13px] sm:text-base font-700 leading-snug" style={{ color: 'var(--color-brown)' }}>
             {dish.name}
           </h3>
           <Info className="w-4 h-4 mt-0.5 ml-1 flex-shrink-0 opacity-30 group-hover:opacity-70 transition-opacity"
@@ -161,23 +163,24 @@ export default function DishCard({ dish, isFav, onToggleFav, onViewDetail }) {
         </p>
 
         <div className="flex items-center justify-between" onClick={e => e.stopPropagation()}>
-          <span className="text-[15px] sm:text-[18px] font-800" style={{ color: 'var(--color-terracotta)' }}>
+          <span className="text-[14px] sm:text-[18px] font-800" style={{ color: 'var(--color-terracotta)' }}>
             ₹{dish.price}
           </span>
           {qty > 0 ? (
-            <div className="flex items-center justify-between h-[38px] sm:h-[44px] w-[90px] sm:w-[110px] rounded-full text-[13px] sm:text-[14px] font-800 bg-[var(--color-terracotta)] text-white shadow-md overflow-hidden">
-              <button onClick={handleRemove} className="flex-1 h-full flex items-center justify-center hover:bg-black/10 transition-colors">
+            <div className="flex items-center justify-between h-[34px] sm:h-[44px] w-[80px] sm:w-[110px] rounded-full text-[12px] sm:text-[14px] font-800 bg-[var(--color-terracotta)] text-white shadow-md overflow-hidden">
+              <button onClick={handleRemove} aria-label="Decrease quantity" className="flex-1 h-full flex items-center justify-center hover:bg-black/10 transition-colors">
                 <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </button>
               <span className="w-5 text-center">{qty}</span>
-              <button onClick={handleAdd} className="flex-1 h-full flex items-center justify-center hover:bg-black/10 transition-colors">
+              <button onClick={handleAdd} aria-label="Increase quantity" className="flex-1 h-full flex items-center justify-center hover:bg-black/10 transition-colors">
                 <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </button>
             </div>
           ) : (
             <button
               onClick={handleAdd}
-              className={`flex items-center justify-center gap-1 sm:gap-1.5 h-[38px] sm:h-[44px] px-3 sm:px-5 rounded-full text-[12px] sm:text-[13px] font-700 transition-all ${justAdded ? 'bg-[var(--color-success)] text-white shadow-md' : 'btn-accent'}`}
+              aria-label="Add to order"
+              className={`flex items-center justify-center gap-1 sm:gap-1.5 h-[34px] sm:h-[44px] px-2.5 sm:px-5 rounded-full text-[11px] sm:text-[13px] font-700 transition-all ${justAdded ? 'bg-[var(--color-success)] text-white shadow-md' : 'btn-accent'}`}
             >
               {justAdded ? <><Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> <span className="hidden sm:inline">Added</span></> : <><Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> <span className="hidden sm:inline">Add</span></>}
             </button>

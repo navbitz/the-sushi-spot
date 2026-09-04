@@ -12,12 +12,14 @@ import DishModal from './components/DishModal';
 import OrderTrackerModal from './components/OrderTrackerModal';
 import ReservationModal from './components/ReservationModal';
 import FullMenuPage from './components/FullMenuPage';
+import CheckoutModal from './components/CheckoutModal';
 import { useStore } from './context/StoreContext';
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [selectedDish, setSelectedDish] = useState(null);
   const [isTrackerOpen, setIsTrackerOpen] = useState(false);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [checkoutTotal, setCheckoutTotal] = useState(0);
   const [isReservationOpen, setIsReservationOpen] = useState(false);
   const [showFullMenuPage, setShowFullMenuPage] = useState(false);
@@ -41,6 +43,11 @@ function App() {
   const handleCheckout = (finalTotal) => {
     setCheckoutTotal(finalTotal);
     setIsCartOpen(false);
+    setIsCheckoutOpen(true);
+  };
+
+  const handlePaymentSuccess = () => {
+    setIsCheckoutOpen(false);
     setIsTrackerOpen(true);
   };
 
@@ -101,6 +108,13 @@ function App() {
         isOpen={isTrackerOpen}
         onClose={() => { setIsTrackerOpen(false); clearCart(); }}
         finalTotal={checkoutTotal}
+      />
+
+      <CheckoutModal
+        isOpen={isCheckoutOpen}
+        onClose={() => setIsCheckoutOpen(false)}
+        totalAmount={checkoutTotal}
+        onSuccess={handlePaymentSuccess}
       />
 
       <ReservationModal

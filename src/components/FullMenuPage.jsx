@@ -51,7 +51,7 @@ export default function FullMenuPage({ onBack, onViewDetail, onOpenCart, isOpen,
 
       {/* Sticky Top Bar */}
       <div
-        className="sticky top-0 z-50 flex items-center px-4 sm:px-5 lg:px-14 py-3 sm:py-4 border-b border-black/5 dark:border-white/10 backdrop-blur-lg"
+        className="sticky top-0 z-50 flex items-center px-4 sm:px-5 lg:px-14 py-2.5 sm:py-4 border-b border-black/5 dark:border-white/10 backdrop-blur-lg"
         style={{ background: 'var(--color-cream-dark)', opacity: 0.97 }}
       >
         <button
@@ -159,7 +159,7 @@ export default function FullMenuPage({ onBack, onViewDetail, onOpenCart, isOpen,
 
         {/* Grid */}
         {filtered.length > 0 ? (
-          <div key={gridKey} className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 anim-grid-swap">
+          <div key={gridKey} className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 anim-grid-swap">
             {filtered.map(item => (
               <DishCard
                 key={item.id}
@@ -193,7 +193,7 @@ export default function FullMenuPage({ onBack, onViewDetail, onOpenCart, isOpen,
 
       {/* Floating Bottom Cart Bar */}
       {cartCount > 0 && (
-        <div className="sticky bottom-6 left-0 right-0 z-50 px-4 sm:px-5 flex justify-center pointer-events-none mt-8">
+        <div className="sticky bottom-4 sm:bottom-6 left-0 right-0 z-50 px-4 sm:px-5 flex justify-center pointer-events-none mt-8">
           <div className="pointer-events-auto flex items-center justify-between bg-[#1f2937] dark:bg-[#2A2A2A] rounded-full p-2 pl-6 shadow-2xl w-full max-w-md border border-white/10">
             <div className="flex items-center gap-3">
               <ShoppingBag className="w-5 h-5 text-white/90" />

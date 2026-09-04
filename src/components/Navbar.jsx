@@ -10,7 +10,7 @@ export default function Navbar({ setIsCartOpen }) {
   const [scrolled, setScrolled] = useState(false);
   const [dark, setDark] = useState(() => {
     try {
-      return localStorage.getItem('theme') === 'dark' || document.documentElement.classList.contains('dark');
+      return localStorage.getItem('theme') === 'dark';
     } catch {
       return false;
     }
@@ -26,10 +26,17 @@ export default function Navbar({ setIsCartOpen }) {
   };
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -60,7 +67,7 @@ export default function Navbar({ setIsCartOpen }) {
           
           {/* Logo Section */}
           <a href="#home" className="flex items-center gap-2 group shrink-0">
-            <img src="/img/logo.png" alt="The Sushi Spot" className="h-6 w-6 object-contain" />
+            <img src="/img/logo.webp" alt="The Sushi Spot" className="h-6 w-6 object-contain" />
             <span className="text-[17px] font-800 tracking-tight text-[var(--color-dark)] group-hover:text-[var(--color-terracotta)] transition-colors" style={{ fontFamily: 'var(--font-display)' }}>
               The Sushi Spot
             </span>
@@ -118,6 +125,8 @@ export default function Navbar({ setIsCartOpen }) {
               onClick={() => setMobileOpen(v => !v)}
               className="md:hidden p-2 rounded-full transition-colors hover:bg-black/5 text-[var(--color-dark)]"
               aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
             </button>
@@ -127,6 +136,7 @@ export default function Navbar({ setIsCartOpen }) {
 
       {/* Edge-to-Edge Mobile Dropdown */}
       <div 
+        id="mobile-menu"
         className={`fixed inset-x-0 top-[60px] z-[90] transition-all duration-300 overflow-hidden bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-lg border-b border-black/5 dark:border-white/10 shadow-md md:hidden ${scrolled ? 'top-[53px]' : 'top-[68px]'}`}
         style={{
           maxHeight: mobileOpen ? '300px' : '0',

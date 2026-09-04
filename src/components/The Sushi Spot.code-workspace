@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "The Sushi Spot",
+			"path": "../.."
+		},
+		{
+			"name": "img",
+			"path": "../../../../Downloads/img"
+		}
+	],
+	"settings": {}
+}

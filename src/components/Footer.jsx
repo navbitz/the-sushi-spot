@@ -12,13 +12,13 @@ export default function Footer() {
     <footer className="bg-[var(--color-cream-dark)] border-t border-black/5 dark:border-white/5 transition-colors">
 
       {/* Main footer content */}
-      <div className="max-w-6xl mx-auto px-5 lg:px-14 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+      <div className="max-w-6xl mx-auto px-5 lg:px-14 py-10 sm:py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
 
           {/* Brand */}
           <div className="md:col-span-1 lg:col-span-2 pr-0 lg:pr-10">
             <div className="flex items-center gap-2 mb-4">
-              <img src="/img/logo.png" alt="Logo" className="w-8 h-8 object-contain" />
+              <img src="/img/logo.webp" alt="Logo" className="w-8 h-8 object-contain" />
               <span className="text-[15px] font-700 text-[var(--color-dark)]">
                 The Sushi Spot
               </span>
@@ -108,7 +108,7 @@ export default function Footer() {
           {[1, 2, 3, 4].map(n => (
             <img
               key={n}
-              src={`/img/footer-card-${n}.png`}
+              src={`/img/footer-card-${n}.webp`}
               alt={`Payment method ${n}`}
               className="h-6 object-contain"
             />

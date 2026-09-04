@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex flex-col justify-start overflow-hidden pt-28 lg:pt-36 pb-16 lg:pb-24 transition-colors"
+      className="relative flex flex-col justify-start overflow-hidden pt-20 lg:pt-36 pb-12 lg:pb-24 transition-colors"
       style={{ background: 'var(--color-cream)' }}
     >
       {/* ── ULTRAWIDE / ZOOM CONSTRAINT CONTAINER ── */}
@@ -32,9 +32,9 @@ export default function Hero() {
           {/* Right Side Background Circle */}
           <div className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/4 w-[400px] h-[400px] lg:w-[580px] lg:h-[580px] xl:w-[680px] xl:h-[680px] bg-[var(--color-terracotta-pale)] rounded-full z-0 transition-colors" />
 
-          {/* susususu.png — Sushi Hero Image */}
+          {/* susususu.webp — Sushi Hero Image */}
           <img
-            src="/img/susususu.png"
+            src="/img/susususu.webp"
             alt="Premium Sushi Nigiri"
             fetchPriority="high"
             decoding="async"
@@ -50,13 +50,13 @@ export default function Hero() {
           <div ref={contentRef} data-visible={contentVisible} className="reveal-left">
             {/* Title with inline image */}
             <h1
-              className="text-[44px] sm:text-[70px] md:text-[85px] leading-[1.05] font-900 tracking-tight mb-5 sm:mb-6 relative"
+              className="text-[36px] sm:text-[70px] md:text-[85px] leading-[1.05] font-900 tracking-tight mb-3 sm:mb-6 relative"
               style={{ color: 'var(--color-dark)', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}
             >
               The Sushi
               <span className="absolute ml-[0.1em] sm:ml-[0.25em]" style={{ transform: 'translateY(-0.05em)' }}>
                 <img
-                  src="/img/Plate.png"
+                  src="/img/Plate.webp"
                   alt="Dish"
                   fetchPriority="high"
                   decoding="async"
@@ -69,7 +69,7 @@ export default function Hero() {
 
             {/* Subtext */}
             <p
-              className="text-[14px] md:text-[15px] leading-[1.7] max-w-[300px] mb-6"
+              className="text-[13px] sm:text-[14px] md:text-[15px] leading-[1.7] max-w-[260px] sm:max-w-[300px] mb-5 sm:mb-6"
               style={{ color: 'var(--color-muted)', fontWeight: 500 }}
             >
               Purest Sushi Experience Focusing on Premium Quality Ingredients.
@@ -113,47 +113,56 @@ export default function Hero() {
       {/* ── WHY THE SUSHI SPOT? STRIP ── */}
       <div className="max-w-7xl mx-auto px-6 lg:px-14 w-full relative z-10 mt-10">
 
-        <div className="text-center mb-10">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-900" style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>Why The Sushi Spot ?</h2>
+        <div className="text-center mb-5 lg:mb-10">
+          <h2 className="text-[20px] lg:text-4xl font-900" style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>Why The Sushi Spot ?</h2>
         </div>
 
-        <div ref={stripRef} className="rounded-[30px] sm:rounded-[40px] p-6 sm:p-8 md:p-14 transition-colors" style={{ background: 'var(--color-cream-dark)' }}>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12">
+        <div ref={stripRef} className="lg:bg-[var(--color-cream-dark)] lg:rounded-[40px] lg:p-14 transition-colors">
+          <div className="flex flex-col lg:grid lg:grid-cols-3 gap-2.5 lg:gap-12">
 
             {/* Feature 1 */}
-            <div data-visible={stripVisible} className="reveal-up stagger-1 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 sm:gap-5">
-              <div className="w-[56px] h-[56px] sm:w-[80px] sm:h-[80px] shrink-0 rounded-2xl bg-[#d6e7e1] dark:bg-[var(--color-surface)] flex items-center justify-center overflow-hidden border border-black/5 dark:border-white/5">
-                <Tag className="w-6 h-6 sm:w-8 sm:h-8 text-[#2c7a5b] dark:text-[var(--color-terracotta)]" />
+            <div data-visible={stripVisible} className="reveal-up stagger-1 flex items-center gap-3 bg-[var(--color-surface)] lg:bg-transparent p-3.5 lg:p-0 rounded-[20px] lg:rounded-none border border-black/5 lg:border-none shadow-sm lg:shadow-none">
+              <div className="w-[44px] h-[44px] lg:w-[80px] lg:h-[80px] shrink-0 rounded-[14px] lg:rounded-2xl bg-[#d6e7e1] dark:bg-[var(--color-surface)] flex items-center justify-center">
+                <Tag className="w-5 h-5 lg:w-8 lg:h-8 text-[#2c7a5b] dark:text-[var(--color-terracotta)]" />
               </div>
-              <div>
-                <h4 className="text-[14px] sm:text-[15px] font-800 text-[var(--color-dark)] mb-1 sm:mb-1.5 mt-1 sm:mt-0">Hot Deals & Offers</h4>
-                <p className="text-[12px] sm:text-[13px] text-[var(--color-muted)] font-500 leading-relaxed max-w-[240px] mx-auto sm:mx-0">
+              <div className="flex-1">
+                <h4 className="text-[14px] lg:text-[15px] font-800 text-[var(--color-dark)] mb-0.5 lg:mb-1.5 leading-tight">Hot Deals & Offers</h4>
+                <p className="text-[11px] lg:text-[13px] text-[var(--color-muted)] font-500 leading-snug line-clamp-1 lg:line-clamp-none">
+                  Exclusive discounts on app orders.
+                </p>
+                <p className="hidden lg:block text-[13px] text-[var(--color-muted)] font-500 leading-relaxed mt-1">
                   We want to show you some love by giving you discounts off food in our restaurants.
                 </p>
               </div>
             </div>
 
             {/* Feature 2 */}
-            <div data-visible={stripVisible} className="reveal-up stagger-2 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 sm:gap-5">
-              <div className="w-[56px] h-[56px] sm:w-[80px] sm:h-[80px] shrink-0 rounded-2xl bg-[#fbdcd7] dark:bg-[var(--color-surface)] flex items-center justify-center overflow-hidden border border-black/5 dark:border-white/5 p-2">
-                <ShoppingBag className="w-6 h-6 sm:w-8 sm:h-8 text-[#d45b48] dark:text-[var(--color-terracotta)]" />
+            <div data-visible={stripVisible} className="reveal-up stagger-2 flex items-center gap-3 bg-[var(--color-surface)] lg:bg-transparent p-3.5 lg:p-0 rounded-[20px] lg:rounded-none border border-black/5 lg:border-none shadow-sm lg:shadow-none">
+              <div className="w-[44px] h-[44px] lg:w-[80px] lg:h-[80px] shrink-0 rounded-[14px] lg:rounded-2xl bg-[#fbdcd7] dark:bg-[var(--color-surface)] flex items-center justify-center p-2">
+                <ShoppingBag className="w-5 h-5 lg:w-8 lg:h-8 text-[#d45b48] dark:text-[var(--color-terracotta)]" />
               </div>
-              <div>
-                <h4 className="text-[14px] sm:text-[15px] font-800 text-[var(--color-dark)] mb-1 sm:mb-1.5 mt-1 sm:mt-0">Self Pick-Up</h4>
-                <p className="text-[12px] sm:text-[13px] text-[var(--color-muted)] font-500 leading-relaxed max-w-[240px] mx-auto sm:mx-0">
+              <div className="flex-1">
+                <h4 className="text-[14px] lg:text-[15px] font-800 text-[var(--color-dark)] mb-0.5 lg:mb-1.5 leading-tight">Self Pick-Up</h4>
+                <p className="text-[11px] lg:text-[13px] text-[var(--color-muted)] font-500 leading-snug line-clamp-1 lg:line-clamp-none">
+                  Order ahead and skip the wait line.
+                </p>
+                <p className="hidden lg:block text-[13px] text-[var(--color-muted)] font-500 leading-relaxed mt-1">
                   Self Pick-up is a service which allows you to place Self Pick-up orders through our App.
                 </p>
               </div>
             </div>
 
             {/* Feature 3 */}
-            <div data-visible={stripVisible} className="reveal-up stagger-3 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 sm:gap-5">
-              <div className="w-[56px] h-[56px] sm:w-[80px] sm:h-[80px] shrink-0 rounded-2xl bg-[#e1dfdf] dark:bg-[var(--color-surface)] flex items-center justify-center overflow-hidden border border-black/5 dark:border-white/5 p-2">
-                <Bike className="w-6 h-6 sm:w-8 sm:h-8 text-[#636363] dark:text-[var(--color-terracotta)]" />
+            <div data-visible={stripVisible} className="reveal-up stagger-3 flex items-center gap-3 bg-[var(--color-surface)] lg:bg-transparent p-3.5 lg:p-0 rounded-[20px] lg:rounded-none border border-black/5 lg:border-none shadow-sm lg:shadow-none">
+              <div className="w-[44px] h-[44px] lg:w-[80px] lg:h-[80px] shrink-0 rounded-[14px] lg:rounded-2xl bg-[#e1dfdf] dark:bg-[var(--color-surface)] flex items-center justify-center p-2">
+                <Bike className="w-5 h-5 lg:w-8 lg:h-8 text-[#636363] dark:text-[var(--color-terracotta)]" />
               </div>
-              <div>
-                <h4 className="text-[14px] sm:text-[15px] font-800 text-[var(--color-dark)] mb-1 sm:mb-1.5 mt-1 sm:mt-0">Fastest Delivery</h4>
-                <p className="text-[12px] sm:text-[13px] text-[var(--color-muted)] font-500 leading-relaxed max-w-[240px] mx-auto sm:mx-0">
+              <div className="flex-1">
+                <h4 className="text-[14px] lg:text-[15px] font-800 text-[var(--color-dark)] mb-0.5 lg:mb-1.5 leading-tight">Fastest Delivery</h4>
+                <p className="text-[11px] lg:text-[13px] text-[var(--color-muted)] font-500 leading-snug line-clamp-1 lg:line-clamp-none">
+                  Lightning fast delivery right to you.
+                </p>
+                <p className="hidden lg:block text-[13px] text-[var(--color-muted)] font-500 leading-relaxed mt-1">
                   Choose your food and we'll deliver it as fast as we can. Download the app & enjoy.
                 </p>
               </div>

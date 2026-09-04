@@ -2,6 +2,8 @@ import { X, Trash2, ArrowRight, Tag, Loader2 } from 'lucide-react';
 import { useState } from 'react';
 import { useStore } from '../context/StoreContext';
 
+import FocusLock from 'react-focus-lock';
+
 export default function CartDrawer({ isOpen, onClose, onCheckout }) {
   const { cartItems, handleRemoveItem, clearCart } = useStore();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -34,8 +36,8 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
   return (
     <>
       <div className={`cart-overlay ${isOpen ? 'open' : ''}`} onClick={onClose} aria-hidden="true" />
-
-      <div className={`cart-drawer ${isOpen ? 'open' : ''}`} role="dialog" aria-modal="true" aria-label="Your order">
+      <FocusLock disabled={!isOpen} className={`cart-drawer ${isOpen ? 'open' : ''}`} returnFocus>
+      <div role="dialog" aria-modal="true" aria-label="Your order" className="h-full flex flex-col">
 
         {/* Header */}
         <div
@@ -69,11 +71,11 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
         </div>
 
         {/* Items */}
-        <div className="flex-grow overflow-y-auto px-6 py-5 space-y-5">
+        <div className="flex-grow overflow-y-auto px-6 py-4 sm:py-5 space-y-3.5 sm:space-y-5">
           {cartItems.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center py-20">
               <img
-                src="/img/popular-onigiri.png"
+                src="/img/popular-onigiri.webp"
                 alt="Empty cart"
                 className="w-24 h-24 object-contain opacity-30 mb-4"
               />
@@ -92,11 +94,11 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
             cartItems.map(item => (
               <div
                 key={item.id}
-                className="flex gap-4 pb-5"
+                className="flex gap-4 pb-3.5 sm:pb-5"
                 style={{ borderBottom: '1px solid var(--color-cream-dark)' }}
               >
-                <div className="w-16 h-16 shrink-0 bg-[var(--color-cream-dark)] rounded-xl flex items-center justify-center overflow-hidden">
-                  <img src={item.image} alt={item.name} className="w-12 h-auto object-contain" />
+                <div className="w-12 h-12 sm:w-16 sm:h-16 shrink-0 bg-[var(--color-cream-dark)] rounded-xl flex items-center justify-center overflow-hidden">
+                  <img src={item.image} alt={item.name} className="w-8 sm:w-12 h-auto object-contain" />
                 </div>
                 <div className="flex-grow">
                   <div className="flex justify-between items-start">
@@ -208,6 +210,7 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
           </div>
         )}
       </div>
+      </FocusLock>
     </>
   );
 }

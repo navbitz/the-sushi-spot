@@ -16,7 +16,7 @@ export const menuItems = [
     description: "Premium Atlantic salmon hand-pressed over warm seasoned sushi rice. Served with wasabi & pickled ginger.",
     allergens: ["Fish", "Gluten"],
     isChefsPick: false,
-    image: "/img/recently-salmon-sushi.png",
+    image: "/img/recently-salmon-sushi.webp",
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ export const menuItems = [
     allergens: [],
     isChefsPick: false,
     badge: "🌿 Pure Veg",
-    image: "/img/popular-onigiri.png",
+    image: "/img/popular-onigiri.webp",
   },
   {
     id: 11,
@@ -43,7 +43,7 @@ export const menuItems = [
     description: "Comforting rice balls generously filled with creamy tuna mayo and wrapped in nori seaweed.",
     allergens: ["Fish", "Egg", "Gluten"],
     isChefsPick: false,
-    image: "/img/tuna_onigiri.png",
+    image: "/img/tuna_onigiri.webp",
   },
   /* ── MAKI ROLLS ──────────────────────────────── */
   {
@@ -58,7 +58,7 @@ export const menuItems = [
     allergens: ["Fish", "Gluten", "Egg"],
     isChefsPick: true,
     badge: "🔥 Bestseller",
-    image: "/img/popular-sushi-rolls.png",
+    image: "/img/popular-sushi-rolls.webp",
   },
   {
     id: 4,
@@ -71,7 +71,7 @@ export const menuItems = [
     description: "Crispy fried spring rolls stuffed with shredded cabbage, carrots, and glass noodles. Served with sweet chilli dip.",
     allergens: ["Gluten"],
     isChefsPick: false,
-    image: "/img/popular-spring-rols.png",
+    image: "/img/popular-spring-rols.webp",
   },
   {
     id: 5,
@@ -85,7 +85,7 @@ export const menuItems = [
     allergens: ["Shellfish", "Gluten", "Egg"],
     isChefsPick: true,
     badge: "👨‍🍳 Chef's Pick",
-    image: "/img/about-sushi.png",
+    image: "/img/about-sushi.webp",
   },
   {
     id: 12,
@@ -98,7 +98,7 @@ export const menuItems = [
     description: "Crab stick, avocado, and cucumber inside-out roll sprinkled with toasted sesame seeds.",
     allergens: ["Shellfish", "Gluten"],
     isChefsPick: false,
-    image: "/img/california_roll.png",
+    image: "/img/california_roll.webp",
   },
   /* ── SASHIMI ─────────────────────────────────── */
   {
@@ -112,7 +112,7 @@ export const menuItems = [
     description: "Thinly sliced fresh Atlantic salmon, sourced daily. Served with daikon radish, wasabi, and soy sauce.",
     allergens: ["Fish"],
     isChefsPick: false,
-    image: "/img/salmon_sashimi.png",
+    image: "/img/salmon_sashimi.webp",
   },
   /* ── HAND ROLLS ──────────────────────────────── */
   {
@@ -126,7 +126,7 @@ export const menuItems = [
     description: "Crispy nori cone filled with salmon, avocado, cucumber and spring onion. Best enjoyed immediately.",
     allergens: ["Fish", "Gluten"],
     isChefsPick: false,
-    image: "/img/newsletter-sushi.png",
+    image: "/img/newsletter-sushi.webp",
   },
   {
     id: 8,
@@ -139,7 +139,7 @@ export const menuItems = [
     description: "Creamy avocado, cucumber, and shredded carrots in a crispy hand-rolled nori cone.",
     allergens: ["Gluten"],
     isChefsPick: false,
-    image: "/img/avocado_hand_roll.png",
+    image: "/img/avocado_hand_roll.webp",
   },
   /* ── PLATTERS ────────────────────────────────── */
   {
@@ -154,7 +154,7 @@ export const menuItems = [
     allergens: ["Fish", "Shellfish", "Gluten"],
     isChefsPick: true,
     badge: "🎉 Popular",
-    image: "/img/home-sushi-rolls.png",
+    image: "/img/home-sushi-rolls.webp",
   },
   {
     id: 10,
@@ -167,7 +167,7 @@ export const menuItems = [
     description: "A deluxe assortment of our best maki rolls including Spicy Tuna, California, and Dragon Rolls.",
     allergens: ["Fish", "Shellfish", "Gluten"],
     isChefsPick: false,
-    image: "/img/sushi_box.png",
+    image: "/img/sushi_box.webp",
   },
 ];
 

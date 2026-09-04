@@ -1,6 +1,7 @@
 import { X, Plus, Minus, ShoppingCart } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useStore } from '../context/StoreContext';
+import FocusLock from 'react-focus-lock';
 
 /* FSSAI-style veg/non-veg dot */
 function VegDot({ isVeg }) {
@@ -45,6 +46,7 @@ export default function DishModal({ dish, onClose }) {
         aria-hidden="true"
       />
 
+      <FocusLock returnFocus>
       {/* Modal */}
       <div
         className="fixed inset-x-0 bottom-0 sm:inset-auto sm:left-1/2 sm:-translate-x-1/2 sm:top-1/2 sm:-translate-y-1/2 z-[301] w-full sm:max-w-lg"
@@ -59,7 +61,7 @@ export default function DishModal({ dish, onClose }) {
         >
           {/* Image with skeleton */}
           <div
-            className="relative h-52 sm:h-60 flex items-center justify-center flex-shrink-0"
+            className="relative h-40 sm:h-60 flex items-center justify-center flex-shrink-0"
             style={{ background: 'var(--color-cream)' }}
           >
             {/* Skeleton placeholder */}
@@ -68,7 +70,7 @@ export default function DishModal({ dish, onClose }) {
             )}
             <img
               src={dish.image} alt={dish.name}
-              className={`h-44 w-auto object-contain transition-opacity duration-300 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+              className={`h-32 sm:h-44 w-auto object-contain transition-opacity duration-300 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
               onLoad={() => setImgLoaded(true)}
             />
             <button
@@ -93,7 +95,7 @@ export default function DishModal({ dish, onClose }) {
           <div className="flex flex-col overflow-y-auto px-6 pb-4 pt-5">
             {/* Name + veg */}
             <div className="flex items-start justify-between gap-3 mb-1">
-              <h2 id="dish-modal-title" className="text-[20px] font-800 leading-tight" style={{ color: 'var(--color-dark)' }}>
+              <h2 id="dish-modal-title" className="text-[18px] sm:text-[20px] font-800 leading-tight" style={{ color: 'var(--color-dark)' }}>
                 {dish.name}
               </h2>
               <VegDot isVeg={dish.isVeg} size={5} />
@@ -118,7 +120,7 @@ export default function DishModal({ dish, onClose }) {
             </div>
 
             {/* Description */}
-            <p className="text-[14px] leading-relaxed mb-5" style={{ color: 'var(--color-muted)' }}>
+            <p className="text-[13px] sm:text-[14px] leading-relaxed mb-5" style={{ color: 'var(--color-muted)' }}>
               {dish.description}
             </p>
 
@@ -183,6 +185,7 @@ export default function DishModal({ dish, onClose }) {
           </div>
         </div>
       </div>
+      </FocusLock>
     </>
   );
 }

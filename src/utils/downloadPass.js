@@ -1,3 +1,5 @@
+import JsBarcode from 'jsbarcode';
+
 /**
  * Utility to generate and download an ultra-premium, high-resolution PNG Booking Pass ticket.
  */
@@ -225,30 +227,24 @@ export function downloadPassAsImage({ bookingId, name, date, time, guests }) {
   const barcodeY = locY + 70;
 
   // Procedural Barcode rendering
-  ctx.fillStyle = '#1C1917';
   const barStartX = px + 40;
   const barW = pw - 80;
   const barH = 65;
 
-  // Generate deterministic pattern based on bookingId
-  let seed = 0;
-  for (let i = 0; i < bookingId.length; i++) {
-    seed += bookingId.charCodeAt(i);
-  }
+  // Generate real barcode using JsBarcode on an offscreen canvas
+  const barcodeCanvas = document.createElement('canvas');
+  JsBarcode(barcodeCanvas, bookingId, {
+    format: "CODE128",
+    width: 3, // slightly wider bars for clarity
+    height: barH,
+    displayValue: false,
+    margin: 0,
+    lineColor: "#1C1917",
+    background: "transparent"
+  });
 
-  ctx.fillStyle = 'rgba(28, 25, 23, 0.9)';
-  let currentX = barStartX + 20;
-  const endX = barStartX + barW - 20;
-
-  while (currentX < endX) {
-    seed = (seed * 9301 + 49297) % 233280;
-    const rnd = seed / 233280;
-    const lineWidth = rnd > 0.6 ? 4 : rnd > 0.3 ? 2 : 1;
-    const gap = (rnd * 3 + 1) | 0;
-
-    ctx.fillRect(currentX, barcodeY, lineWidth, barH);
-    currentX += lineWidth + gap;
-  }
+  // Draw the generated barcode onto the main canvas, scaling it to fit barW
+  ctx.drawImage(barcodeCanvas, barStartX, barcodeY, barW, barH);
 
   // Barcode label below
   ctx.fillStyle = '#8A7A70';

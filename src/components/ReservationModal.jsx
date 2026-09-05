@@ -2,6 +2,7 @@ import { X, CalendarDays, Clock, Users, CheckCircle2, Download } from 'lucide-re
 import { useState } from 'react';
 import { downloadPassAsImage } from '../utils/downloadPass';
 import FocusLock from 'react-focus-lock';
+import Barcode from './Barcode';
 
 export default function ReservationModal({ isOpen, onClose }) {
   const [step, setStep] = useState('form'); // 'form' or 'receipt'
@@ -221,14 +222,8 @@ export default function ReservationModal({ isOpen, onClose }) {
 
                 {/* Simulated Barcode */}
                 <div className="pt-2 border-t border-stone-100 dark:border-stone-800 flex flex-col items-center gap-1">
-                  <div className="h-8 w-full flex items-center justify-between overflow-hidden opacity-75">
-                    {[3, 1, 2, 4, 1, 3, 2, 1, 4, 2, 1, 3, 4, 1, 2, 3, 1, 4, 2, 1, 3, 2, 4, 1].map((w, idx) => (
-                      <div 
-                        key={idx} 
-                        className="h-full bg-stone-800 dark:bg-stone-200" 
-                        style={{ width: `${w * 2}px` }} 
-                      />
-                    ))}
+                  <div className="h-8 w-full flex items-center justify-center overflow-hidden opacity-75 text-stone-800 dark:text-stone-200">
+                    <Barcode value={bookingId} width={1.8} height={32} className="w-full object-cover" />
                   </div>
                   <span className="text-[9px] font-mono text-[var(--color-muted)] tracking-widest">
                     * {bookingId} * VALIDATION CODE

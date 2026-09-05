@@ -88,7 +88,7 @@ export default function ReservationSection() {
         type="button"
         onClick={() => setSelectedTime(slot.time)}
         className={`relative py-3.5 px-3 rounded-xl border text-[12px] font-bold transition-all active:scale-[0.97] ${isSelected
-          ? 'bg-[var(--color-dark)] text-white border-[var(--color-dark)] shadow-lg shadow-black/20'
+          ? 'bg-[var(--color-terracotta)] text-white border-[var(--color-terracotta)] shadow-lg shadow-[var(--color-terracotta)]/30'
           : 'bg-[var(--color-surface)] border-black/10 dark:border-white/10 text-[var(--color-muted)] hover:border-[var(--color-terracotta)] hover:text-[var(--color-dark)] hover:-translate-y-0.5 hover:shadow-sm'
           }`}
       >

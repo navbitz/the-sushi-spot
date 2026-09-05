@@ -73,7 +73,7 @@ export default function Footer() {
               <button 
                 type="submit" 
                 disabled={subscribed}
-                className="px-4 py-2 text-xs font-bold bg-[var(--color-dark)] text-white rounded-[12px] hover:opacity-90 transition-colors shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 text-xs font-bold bg-[var(--color-dark)] text-[var(--color-surface)] rounded-[12px] hover:opacity-90 transition-colors shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {subscribed ? 'Joined' : 'Join'}
               </button>

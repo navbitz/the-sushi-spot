@@ -42,22 +42,7 @@ The goal was to make the website feel like a real restaurant ordering experience
 - Google Fonts using Lora and Nunito for the typography
 - React hooks like "useState" and "useMemo" for managing interactions and filtering
 
-5. How did you use AI?
-
-I used AI as a development assistant instead of relying on it to build the whole project on its own.
-
-I used AI to:
-
-- Generate initial React component structures and boilerplate
-- Help come up with and refine UI ideas
-- Generate the sushi dish visual assets
-- Assist with responsive layouts and breakpoints
-- Find and fix implementation issues
-- Suggest improvements to the overall user experience
-
-I then reviewed, tested, modified, and integrated the generated work into the final website.
-
-6. What did you personally refine?
+5. What did you personally refine?
 
 I personally guided the overall design and user experience of the project.
 

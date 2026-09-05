@@ -61,6 +61,7 @@ body::-webkit-scrollbar {
 
 /* ── DARK MODE ── */
 .dark {
+  color-scheme: dark;
   --color-cream: #141210;
   --color-cream-dark: #1e1b18;
   --color-surface: #1e1b18;
@@ -74,6 +75,16 @@ body::-webkit-scrollbar {
 .dark body {
   background-color: var(--color-cream);
   color: var(--color-dark);
+}
+
+/* Fix dropdown options and date picker indicators in dark mode */
+select option {
+  background-color: var(--color-surface);
+  color: var(--color-dark);
+}
+
+.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.9);
 }
 
 /* ── FOCUS VISIBLE (Accessibility Signifier) ── */
